@@ -1,0 +1,99 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style></style>
+</head>
+<body>
+    <canvas id="artcanvas" width="500" height="500"></canvas>
+</body>
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/fabric-1.7.7.js"></script>
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
+></script>
+<script>
+canvas = new fabric.Canvas('artcanvas');
+addImageToCanvas("./img/css.png");
+function addImageToCanvas(imgSrc) {
+    fabric.Object.prototype.transparentCorners = false;
+    fabric.Image.fromURL(imgSrc, function(myImg) {
+        canvas.clear();
+        var img1 = myImg.set({
+            left: 20,
+            top: 20,
+            width: 460,
+            height: 460
+        });
+        img1.selectable = false;
+        canvas.add(img1);
+        var clipRectangle = new fabric.Rect({
+            originX: 'left',
+            originY: 'top',
+            left: 150,
+            top: 150,
+            width: 200,
+            height: 200,
+            fill: 'transparent',
+            strokeDashArray: [10, 10],
+            stroke: 'red',
+            selectable: false
+        });
+        clipRectangle.set({
+            clipFor: 'layer'
+        });
+        canvas.add(clipRectangle);
+    });
+}
+addLayerToCanvas();
+function addLayerToCanvas() {
+    var clickedImage = new Image();
+    clickedImage.onload = function(img) {
+        var pug = new fabric.Image(clickedImage, {
+            width: 100,
+            height: 100,
+            left: 150,
+            top: 150,
+            clipName: 'layer',
+            clipTo: function(ctx) {
+                return _.bind(clipByName, pug)(ctx)
+            }
+        });
+        canvas.add(pug);
+    };
+    clickedImage.src = "./img/html.png";
+}
+function clipByName(ctx) {
+    this.setCoords();
+    var clipRect = findByClipName(this.clipName);
+    var scaleXTo1 = (1 / this.scaleX);
+    var scaleYTo1 = (1 / this.scaleY);
+    ctx.save();
+    var ctxLeft = -(this.width / 2) + clipRect.strokeWidth;
+    var ctxTop = -(this.height / 2) + clipRect.strokeWidth;
+    var ctxWidth = clipRect.width - clipRect.strokeWidth;
+    var ctxHeight = clipRect.height - clipRect.strokeWidth;
+    ctx.translate(ctxLeft, ctxTop);
+    ctx.scale(scaleXTo1, scaleYTo1);
+    ctx.rotate(degToRad(this.angle * -1));
+    ctx.beginPath();
+    ctx.rect(
+        clipRect.left - this.oCoords.tl.x,
+        clipRect.top - this.oCoords.tl.y,
+        clipRect.width,
+        clipRect.height
+    );
+    ctx.closePath();
+    ctx.restore();
+}
+function findByClipName(name) {
+    return _(canvas.getObjects()).where({
+        clipFor: name
+    }).first()
+}
+function degToRad(degrees) {
+    return degrees * (Math.PI / 180);
+}
+</script>
+</html>
