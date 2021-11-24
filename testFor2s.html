@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+    <body>
+        <canvas id="artCanvas" width="500" height="500"></canvas>
+    </body>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/fabric-1.7.7.js"></script>
+    <script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
+></script>
+<script>
+    canvas = new fabric.Canvas('artCanvas');
+
+    addImageToCanvas('./img/css.png');
+    function addImageToCanvas(imgSrc) {
+        // fabric.Object.prototype.transparentCorners = false;
+
+        fabric.Image.fromURL(imgSrc, function(myImg) {
+            var img1 = myImg.set({  //定义背景图大小位置
+                left: 20,
+                top: 20,
+                width: 460,
+                height: 460
+            })
+            img1.selectable = false; //取消选框，就不能移动了，达到背景的效果
+            canvas.add(img1);  //加入画布
+
+            var clipRectangle = new fabric.Rect({
+                originX: 'left', //平移的水平起始点
+                originY: 'top',
+                left: 150,
+                top: 150,
+                width: 200,
+                height: 200,
+                fill: 'transparent', //透明的填充色
+                strokDashArray: [10, 10],  //stroke参数必须，虚线及间隔参数
+                stroke: 'red', //描边颜色
+                selectable: false //取消选框，相当于可见裁剪的区域
+            })
+
+            canvas.add(clipRectangle); //加入画布
+        })
+    }
+
+    addLayerToCanvas();
+    function addLayerToCanvas() {
+        var clickedImage = new Image();  //这个就是通过js创建的对象
+
+        clickedImage.onload = function(img) {
+            var pug = new fabric.Image(clickedImage, {  //js生成的图片注入fabric的image类
+
+            })
+        }
+
+        clickedImage.src = './img/html.png';  //相当于给浏览器缓存了一张图片，src 属性一定要写到 onload 的后面，否则程序在 IE 中会出错。
+    }
+</script>
+</html>

@@ -1,0 +1,1236 @@
+fabric.Image
+构造函数：new Image()
+
+父类：fabric.Object
+
+命名空间：filters
+
+类属性成员：
+async(boolean)：static成员，指明该类型的实例都是异步操作，默认值为true。
+ATTRIBUTE_NAMES：static成员，转换SVG元素时产生的属性名称列表（在fabric.Line.fromElement函数中使用）。
+CSS_CANVAS(String)：static成员，Canvas默认的CSS类名，默认值为"canvas-img"。
+pngCompression(Number)：static成员，指定当产生png图片时使用的压缩级别，可选值为1到9，默认值为1。
+_lastScaleX(Number)：私有成员，记录最后一次的scaleX的值，用于检测图片重演染之后是否有改变大小。
+_lastScaleY(Number)：私有成员，记录最后一次的scaleY的值，用于检测图片重演染之后是否有改变大小。
+alignX(String)：preserveAspectRatio的一部分，可选值为"none", "mid", "min", "max"，默认值为"none"。
+alignY(String)：preserveAspectRatio的一部分，可选值为"none", "mid", "min", "max"，默认值为"none"。
+angle(Number)：Object的旋转角度（以度为单位）。
+backgroundColor(String)：Object的背景颜色，只有赋值字符串时才起作用。
+borderColor(String)：Object为激活状态时，控制器的边框颜色。默认值为：rgba(102,153,255,0.75)。
+borderOpacityWhenMoving(Number)：当Object处于激活或移动状态时，控制器边框的透明度。默认值为：0.4。
+borderScaleFactor(Number)：Object控制器四边的缩放因子，默认为1。
+centeredRotation(boolean)：当属性为true时，通过控制器进行旋转的时候将以Object的中点为原点进行旋转，默认true。向下兼容提示：该属性替代了旧版本的centerTransform(boolean)属性。
+centeredScaling(boolean)：当属性为true时，将以Object的中点作为缩放的原点，默认false。向下兼容提示：该属性替代了旧版本的centerTransform(boolean)属性。
+clipTo(Function)：该属性是一个函数，决定了如何对Object进行裁剪（Context作为函数的和一个参数传入）。要注意Context的原点是Object的中点（而不是左上角的那个点）。
+cornerColor(String)：Object控制器（激活的时候）四角的颜色，默认值为：rgba(102,153,255,0.5)。
+cornerSize(Number)：Object控制器四角的大小，以像素为单位，默认值为：12。
+crossOrigin(String)：可选值为""、" anonymous"、" allow-credentials"。
+evented(boolean)：当属性为false时，该Object将不会成为事件的目标，默认true。所有的事件传递都会经过该属性。该属性是在1.3.4版本之后引入的。
+fill(String)：Object填充的颜色，默认值为：rgb(0,0,0)。
+fillRule(String)：该属性用于填充Object，只能接受值"nonzero"，默认值也是"nonzero"。向下兼容提示：该属性在1.4.2版本之前都是用fabric.Object.globalCompositeOperation函数替代的。
+flipX(boolean)：当属性为true时，Object将以水平翻转的样式被渲染。默认为false。
+flipY(boolean)：当属性为true时，Object将以垂直翻转的样式被演染。默认为false。
+getSvgSrc(Function)：getSrc函数的别名。
+globalCompositeOperation(String)：为Canvas的globalCompositeRule设置的混合规则。默认值为："source-over"。
+hasBorders(boolean)：当属性为false时，Object的控制器边框将不会被渲染。默认值为：true。
+hasControls(boolean)：当属性为false时，Object的控制器将不会显示，与此同时将无法操作Object。默认值为true。
+hasRotatingPoint(boolean)：当属性为false时，Object的控制器旋转点将不会显示和被选中。默认为true。
+hoverCursor(String)：当鼠标覆盖在该Object上时使用的鼠标样式。默认为null。
+includeDefaultValues(boolean)：当设置为false时，Object序列化过程中将不会包含其默认值。默认为true。
+left(Number)：Object的左边位置，即X坐标。注意：在默认情况下，是以Object中点进行计算，你可以设置originx={left|center|right}进行改变。默认值为0。
+lockMovementX(boolean)：当设置为true，Object的水平移动将被锁定。默认值为false。
+lockMovementY(boolean)：当设置为true，Object的垂直移动将被锁定。默认值为false。
+lockRotation(boolean)：当设置为true，Object的旋转将被锁定。默认值为false。
+lockScalingFlip(boolean)：当设置为true，Object将通过缩放到负值从而实现被翻转。默认值为false。
+lockScalingX(boolean)：当设置为true，Object水平方向将无法被缩放。默认值为false。
+lockScalingY(boolean)：当设置为true，Object垂直方向将无法被缩放。默认值为false。
+lockUniScaling(boolean)：当设置为true，Object将无法被锁定比例进行缩放。默认值为false。
+meetOrSlice(String)：preserveAspectRatio的一部分，可选值为"meet"、"slice"。取值为meet时，图片会全部展示；取值为slice时，图片会跟据视窗进行部分填充。
+minScaleLimit(Number)：Object缩放比例最小值，默认值为0.01。
+oCoords(Object)：Object包含的控制器的坐标，默认值为null。
+opacity(Number)：Object的透明度，默认值为1。
+originX(String)：Object平移的水平起始点，可选值有"left"|"right"|"center"默为值为"left"。查阅http://jsfiddle.net/1ow02gea/40/获知originX和orginY是如何影响Group中的Object。
+originY(String)：Object平移的垂直起始点，可选值有"top"|"bottom"|"center"默为值为"top"。查阅http://jsfiddle.net/1ow02gea/40/获知originX和orginY是如何影响Group中的Object。
+padding(Number)：Object与其控制器边框中间的空白间距，以像素为单位，默认为0。
+perPixelTargetFind(boolean)：当设置为true时，canvas上的object是基于像素进行检索的，而不是基于边框盒模型。默认为false。
+rotatingPointOffset(Number)：Object控制器旋转点的偏移量（当hasRotatingPoint设置为true时才有效），默认值为40。
+scaleX(Number)：Object水平方向的缩放因子。默认值为1。
+scaleY(Number)：Object垂直方向的缩放因子，默认值为1。
+selectable(boolean)：当设置为false时，Object无法被选中编辑（无论是以像素点为基础或以组为基础），但是相应的事件仍然会触发。默认值为true。
+shadow(fabric.Shadow)：当前图形的Shadow对象，默认为null。
+stateProperties(Array)：属性列表，用于检查Object的状态是否改变（fabric.Object.hasChanged）。目的在于实现历史状态的redo和undo操作。
+stroke(String)：当该属性有定义的时候，Object将通过该属性定义的线条以及颜色进行渲染。默认为null。
+strokeDashArray(Array)：用于装载Object线条的破折号样式的数组（stroke属性必须已被定义）。
+strokeLineCap(String)：Object线条的终端样式，可选值有"butt"|"round"|"square"，默认值为"butt"。
+strokeLineJoin(String)：Object线条连接处边角的样式，可选值有"bevil"|"round"|"miter"，默认值为"miter"。
+strokeMiterLimit(Number)：Object线条链接处的最大斜角长度（当strokeLineJoin值设置为miter时起作用），默认值为10。
+strokeWidth(Number)：用于渲染Object的线条的宽度，默认值为1。
+top(Number)：Object的顶部位置。注意：默认情况下是相对于Object的中点，你可以设置originY={top|center|bottom}进行改变。默认值为0。
+transformMatrix(Array)：变换矩阵（类似于SVG的变换矩阵）。
+transparentCorners(boolean)：当设置为true时，Object的控制器边缘内部将会被渲染为透明，默认值为true。
+type(String)：Object的类型，可选值为"rect"|"circel"|"path"等，默认值为"object"。要注意的是，这个属性为只读，不能进行修改。如果你修改这个属性的值，Fabric框架特定部分（比如JSON加载）将会不正常。
+visible(boolean)：当设置为false，Object将不会在Canvas上被渲染。默认值为true。
+
+类函数成员：
+static fabric.Image fromElement(SVGElement, Object opt)：通过指定的SVG元素返回fabric.Image实例。第一个参数是指定的SVG元素。
+static fabric.Image fromObject(Object)：通过指定的Object返回对应的fabric.Image实例。
+static void fromURL(String, Function opt, Object opt)：通过指定的URL创建对应的fabric.Image实例。第一个参数为URL；第二个参数为回调函数，可选，当Image创建后被调用，新创建的fabric.Image实例作为回调函数的第一个参数传入；第三个参数，可选，准备附加到Image实例上的选项。
+boolean _needsResize()：若返因true则说明fabric.Image需要重绘大小。
+void _renderControls(CanvasRenderingContext2D, boolean opt)：渲染Object的控制器以及边框。第一个参数是渲染的Context；第二个参数若设置为true，则相关的Context则不会被变换。
+void _restoreCompositeOperation(CanvasRenderingContext2D)：在Object变更渲染之后，保存之前的保存的画布操作（globalCompositeOperation）。参数则是指定在其上染上的Context。
+void _setupCompositeOperation(CanvasRenderingContext2D)：为指定的Object设置一个画布全局操作（globalCompositeOperation）。特定的Object自定义操作可以通过设置globalCompositeOperation属性进行设置。参数则是指定在其上染上的Context。
+void adjustPosition(String)：参数可选值为"left"|"center"|"right"。
+fabric.Object animate(String | Object, Number | Object)：对指定的属性进行动画变换。第一个参数是用于动画的属性（Object类型可指定多个）；当参数一为String时，参数二为变换的终点值，否则为对象选项。具体可参照：http://fabricjs.com/fabric-intro-part-2/#animation。
+fabric.Object bringForward(boolean opt)：将绘制的Object在栈中位置向上移动。当参数设置为true时，将Object置于下一个相交的Object之上。
+fabric.Object bringToFront()：将Ojbect移到绘图栈的最顶端。
+fabric.Ojbect center()：在Canvas的水平和垂直方向上居中Object。居中操作之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object centerH()：在Canavs的水平方向上居中Object。之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object centerV()：在Canvas的垂直方向上居中Object。之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object clone(Function, Array)：深度复制Object。第一个参数是回调函数，该回调的第一个参数是复制出来的Object；第二个参数是一个数组，装载着你想要添加到输出的所有属性。
+fabric.Object cloneAsImage(Function)：从Object创建出一个新的fabric.Image实例。参数是一个回调函数，该回调的第一个参数是复制出来的fabric.Image实例。
+Number complexity()：返回一个实例的复杂度。（译者注：该函数估计会被各子类重载，因为这个函数在Object类中直接返回0）。
+boolean containsPoint(fabric.Point)：检查指定的点是否包含在Object中。
+fabric.Object drawBorders(CanvasRenderingContext2D)：绘制Object盒模型的四周，要求有以下公共属性：width、height、padding、borderColor。
+fabric.Object drawControls(CanvasRenderingContext2D)：绘制Object盒模型的控制器，要求有以下公共属性：width、height、conerSize、padding。
+fabric.Object fxstraighten(Object)：和fabric.Object.prototype.straighten()的作用一样，只不过带了动画效果。参数是一个Object，里面有两个元素onComplete和onChange，分别是两个回调函数。onComplete在动画结束之后调用，onChange在动画的每一阶段分别调用。
+Any get(String)：最基本的getter函数，参数为想要获取的属性名。
+Number getAngle()：获得Object的旋转角度，以“度”为单位。
+Object getBoundingRect()：返回Object的边框矩形坐标。返回值是一个Object类型，其中包括了left、top、width、height四个元素。
+Number getBoundingRectHeight()：返回Object的边框矩形的高度。（版本1.0.4开始已废弃）
+Number getBoundingRectWidth()：返回Object的边框矩形的宽度。（版本1.0.4开始已废弃）
+fabric.Point getCenterPoint()：返回Object的真实中点坐标。
+Function getClipTo()：获得Object的裁剪函数。
+HTMLImageElement getElement()：返回与该fabric.Image相关联的<img>的Html元素。
+String getFill()：获得Object的填充颜色。
+boolean getFlipX()：获得Object的flipX属性。
+boolean getFlipY()：获得Object的flipY属性。
+Number getHeight()：获得Object的高度。
+Number getLeft()：获得Object左边的位置，即X坐标，以像素为单位。
+Object getLocalPointer(Event, Object opt)：获取一个点在Object上的本地坐标。注意：第二个参数可选。这个函数默认情况下是获取当前鼠标所在点的本地坐标，如果指定了第二个参数，则该函数将获取第二个参数指定的点的本地坐标。返回值和第二个函数都是Object，包函x、y两个成员。
+Number getOpacity()：获取Object的透明度，在0到1之间的数字。
+Object getOriginalSize()：返回图像的原始尺寸，返回的Object中包含width和height两个成员。
+String getOriginX()：获取Object的原点X值。
+String getOriginY()：获取Object的原点Y值。
+fabric.Point getPointByOrigin(String, String)：如果Object有不同的原点，该函数可获得Object的原点坐标。第一个参数代表originX，可选值为："left"、"center"、"right"；第二个参数代表originY，可选值为："top"、"center"、"bottom"。
+Number getScaleX()：获取Object的scaleX属性值。
+Number getScaleY()：获取Object的scaleY属性值。
+Object getShadow()：获取Object的阴影，返回阴影实例。（译者注：不清楚为啥文档写的是返回Object而不是fabric.Shadow）。
+String getSrc()：返回该fabric.Image的源地址。
+String getStroke()：获取Object的stroke属性值。
+Number getStrokeWidth()：获取Object的笔划宽度。
+String getSvgStyles()：获取svg输出的样式字符串。
+String getSvgTransform()：获取svg输出的变换字符串。
+String getSvgTransformMatrix()：从单一元素的变换矩阵中返回svg输出的变换字符串。
+Number getTop()：获得Object的顶部位置，即Y坐标，以像素为单位。
+Array getTransformMatrix()：获得Object的变换矩阵，即transformMatrix属性值。
+boolean getViewportTransform()：在可能的情况下，获取Object的视口变换。（译者注：源码中返回的是数组，不知道为啥文档中写的是返回boolean）。
+boolean getVisible()：获取Object是否可见。
+Number getWidth()：获取Object的宽度。
+boolean hasStateChanged()：当任一个Object的状态属性发生变化是，该函数返回true。
+fabric.Image initialize(Object)：构造函数，参数是要初始化的属性值。
+boolean intersectsWithObject(fabric.Object)：探测该Object是否与指定的Object有交集。
+boolean intersectsWithRect(Object, Object)：探测该Object是否与指定的矩型有交集。第一个参数是矩形左上角的点；第二个参数是矩形右上角的点。
+boolean isContainedWithinObject(fabric.Object)：探测该Object是否完全包含在另一个指定的Object中。
+boolean isContainedWithinRect(Object, Object)：探测该Object是否完全包含在指定的矩形中。第一个参数是矩形左上角的点；第二个参数是矩形右上角的点。
+boolean isControlVisible(String)：当指定的控制器可见是返回true，否测返回false。参数为控制器的名称，可选值有："tl"、"tr"、"bl"、"br"、"ml"、"mt"、"mr"、"mb"、"mtr"。
+boolean isType(String)：指定的类型和当前Object类型相同时，则返回true。
+fabric.Object moveTo(Number)：将Object移至绘制栈的指定层。
+fabric.Object remove()：将Object从Canvas上移除。
+render(CanvasRenderingContext2D, boolean opt)：在指定的Context上渲染Object。第一个参数是将要渲染的Object；第二个参数为true时，Context将不会进行变换。
+fabric.Object saveState(Object opt)：保存Object的状态。参数是一个Object，当状态保存过程中需要额外添加到Object中的状态属性。
+fabric.Object scale(Number)：缩放Object，X和Y轴方向上等值。参数即是缩放因子。
+fabric.Object scaleToHeight(Number)：将Object的高度缩放到指定值。考虑到盒模型，最好是使用scale进行x、y轴等比缩放。
+fabric.Object scaleToWidth(Number)：将Object的宽度缩放到指定值。考虑到盒模型，最好是使用scale进行x、y轴等比缩放。
+fabric.Object sendBackwards(boolean)：将Object在绘制栈中向下移一层。当参数为true时，将Object移到下一个与之相交的Object之后。
+fabric.Object sendToBack()：将Object移至绘制栈的最底部。
+fabric.Object set(String | Object, Object | Function)：为指定的属性设置值。当设置位置或维度（与left、top、scale、angle等相关联）的属性时，set函数Object的边框和控制器的位置。如果你要将它们也进行更新，需要调用setCoord()函数。第一个参数指定属性名或Object，为Object时函数将会遍历该Object的键值对；第二个参数指定属性值或Function，为Function时属性值将会作为参数传放，并返回一个新值。
+fabric.Object setAngle(Number)：设置Object的角度，以“度”为单位。
+fabric.Object setClipTo(Function)：设置Object的裁剪函数，即clipTo属性。
+fabric.Object setColor(String)：设置实例的颜色（Color是fill属性的别名）。
+fabric.Object setControlsVisibility(Object opt)：设置fabric.Object控制器的显示/隐藏状态。参数是一个要选的Object，可选成员如下所示：
+bl: boolean类型，为true则bottom-left控制器可用，false则不可用。
+br: boolean类型，为true则bottom-right控制器可用，false则不可用。
+mb: boolean类型，为true则middle-bottom控制器可用，false则不可用。
+ml: boolean类型，为true则middle-left控制器可用，false则不可用。
+mr: boolean类型，为true则middle-right控制器可用，false则不可用。
+mt: boolean类型，为true则middle-top控制器可用，false则不可用。
+tl: boolean类型，为true则top-left控制器可用，false则不可用。
+tr: boolean类型，为true则top-right控制器可用，false则不可用。
+mtr: boolean类型，为true则middle-top-rotate控制器可用，false则不可用。
+fabric.Object setControlVisible(String, boolean)：设置指定的控制器显示/隐藏状态。第一个参数是指定的控制器名，可选值有'tl', 'tr', 'br', 'bl', 'ml', 'mt', 'mr', 'mb', 'mtr'；第二个参数为true则指定的控制器可用，否则不可用。
+fabric.Object setCoords()：以当前的角度、宽高为基准，设置四角的的位置。可参考：https://github.com/kangax/fabric.js/wiki/When-to-call-setCoords。
+fabric.Image setCrossOrigin()：在该fabric.Image的实例和相关联的<img>对象上设置crossOrigin值。
+fabric.Image setElement(HTMLElement, Function opt, Object opt)：将该fabric.Image实例相关联的图像更改为另外指定的新元素。如果旧图像上定义了过滤器，这些过滤器将会应用于新图像。你需要在更改关联对象之后调用canvas.renderAll()和object.setCoords()，用于重新渲染图像和更新控制器区域。第一个参数为新指定的<img>对象；第二个参数为可选的回调函数，当新图像生成并将过滤器应用完成之后被调用；第三个参数可选，为附加到新图像上的选项。
+fabric.Object setFill(String)：设置Object的填充颜色。参数示例：rgb(0,0,0)。
+fabric.Object setFlipX(boolean)：设置Object的flipX属性值。
+fabric.Object setFlipY(boolean)：设置Object的flipY属性值。
+fabric.Object setGradient(String, Object)：设置（填充或画笔）的渐变色。无法向后兼容提示：在v1.1.0之前，该函数被命名为setGradientFill。第一个参数可选值为"stroke"或"fill"；第二个参数为Object，可选属性如下：
+属性名	类型	是否可选	默认值	说明
+type	String	是		渐变类型，"linear"或"radial"
+x1	Number	是	0	起始点x坐标
+y1	Number	是	0	起始点y坐标
+x2	Number	是	0	终点x坐标
+y2	Number	是	0	终点y坐标
+r1	Number	是	0	起始点半径（仅在径向渐变时生效）
+r2	Number	是	0	终止点半径（仅在径向渐变时生效）
+colorStops	Object	是		终止色，示例：{0: 'ff0000', 1: '000000'}
+示例1：
+object.setGradient('fill', {
+  type: 'linear',
+  x1: -object.width / 2,
+  y1: 0,
+  x2: object.width / 2,
+  y2: 0,
+  colorStops: {
+    0: 'red',
+    0.5: '#005555',
+    1: 'rgba(0,0,255,0.5)'
+  }
+});
+canvas.renderAll();
+示例2：
+object.setGradient('fill', {
+  type: 'radial',
+  x1: 0,
+  y1: 0,
+  x2: 0,
+  y2: 0,
+  r1: object.width / 2,
+  r2: 10,
+  colorStops: {
+    0: 'red',
+    0.5: '#005555',
+    1: 'rgba(0,0,255,0.5)'
+  }
+});
+canvas.renderAll();
+fabric.Object setLeft(Number)：设置Object的左边距，以像素为单位。
+fabric.Object setOpacity(Number)：设置Object的透明度，参数范围[0-1]。
+void setOptions(Object opt)：通过参数设置Object的属性。
+fabric.Object setOriginX(String)：设置originX属性值，可选值为："left", "right", "center"。
+fabric.Object setOriginY(String)：设置originY属性值，可选值为："top", "bottom", "center"。
+fabric.Object setPatternFill(Object)：设置Object的样式填充。参数的可选成员如下：
+参数名	类型	是否可选	默认值	说明
+source	String | HTMLImageElement			样式来源
+repeat	String	是	"repeat"	指定是否重复样式填充，可选值有："repeat"、"repeat-x"、"repeat-y"、"no-repeat"
+offsetX	Number	是	0	相对于左上角的水平偏移量
+offsetY	Number	是	0	相对于右上角的垂直偏移量
+示例：
+fabric.util.loadImage('http://fabricjs.com/assets/escheresque_ste.png', function(img) {
+  object.setPatternFill({
+    source: img,
+    repeat: 'repeat'
+  });
+  canvas.renderAll();
+});
+void setPositionByOrigin(fabric.Point, String, String)：根据Object的原点设置Object的值置。第一个参数指定的Object的新位置；第二个参数指定Object的水平原点，可选值有：'left', 'center' or 'right'；第三个参数指定Object的垂直原点，可选值有：'top', 'center' or 'bottom'。
+fabric.Object setScaleX(Number)：设置Object的scaleX属性值。
+fabric.Object setScaleY(Number)：设置Object的scaleY属性值。
+fabric.Object setShadow(Object | String opt)：设置Object的阴影。当参数为String类型时，可以如下格式设置："2px 2px 10px rgba(0,0,0,0.2)"；当参数为Object类型时，可选成员如下：
+属性名	类型	是否可选	默认值	说明
+color	String	是	rgb(0,0,0)	阴影颜色
+blur	Number	是	0	阴影模糊度
+offsetX	Number	是	0	水平偏移量
+offsetY	Number	是	0	垂直偏移量
+示例1：
+object.setShadow('2px 2px 10px rgba(0,0,0,0.2)');
+canvas.renderAll();
+示例2：
+object.setShadow({
+  color: 'red',
+  blur: 10,
+  offsetX: 20,
+  offsetY: 20
+});
+canvas.renderAll();
+fabric.Object setSourcePath(String)：设置Object的源路径。译者注：不清楚这里的source path是指啥。参数即为要设置的sourcePath属性值。
+fabric.Image setSrc(String, Function opt, Object opt)：为图像设置新的URL。第一个参数为新的URL；第二个参数为可选的回调函数，当新图像加载成功、过滤器完全应用时被调用；第三个参数，可选，将要附加到新图像上的选项。
+fabric.Object setStroke(String)：设置Object的画笔。
+fabric.Object setStrokeWidth(Number)：设置Object的画笔宽度。
+fabric.Object setTop(Number)：设置Object的top属性，以像素为单位。
+fabric.Object setTransformMatrix(Array)：设置Object的transformMatrix属性。
+fabric.Object setupState()：建立Object的状态。
+fabric.Object setVisible(boolean)：设置Object的visible属性。
+fabric.Object straighten()：拉直Object（将Object从前当角度旋转到0、90、180、270度，取决于哪个角度比较靠近）。
+Object toDatalessObject(Array opt)：返回代表该实例的无数据Object。参数可选，该数组可指定任意你想添加到输出的属性。
+String ToDataURL(Object)：将Object转换成类URL的字符串。参数可选成员如下：
+属性名	类型	是否可选	默认值	说明
+format	String	是	png	输出图片的格式，可选"jpeg"或"png"
+quality	Number	是	1	输出图片质量，[0-1]，jpeg格式生效
+multiplier	Number	是	1	缩放因子
+left	Number	是		裁剪区域左偏移量，v1.2.14引入
+top	Number	是		裁剪区域顶部偏移量，v1.2.14引入
+width	Number	是		裁剪区域宽度，v1.2.14引入
+height	Number	是		裁剪区域高度，v1.2.14引入
+fabric.Object toggle(String)：切换指定的属性，true变为false，false变为true。
+Object toJSON(Array opt)：返回一个代表当前实例的JSON对象。参数可选，该数组可指定任意你想添加到输出的属性。
+fabric.Point toLocalPoint(fabric.Point, originX, originY)：返回指定的点在当前Object的本地坐标。第一个参数指定一个需要转换的全局坐标；第二个参数指定了水平原点，可选值有'left', 'center' or 'right'；第三个参数指定了垂直原点，可选值有'top', 'center' or 'bottom'。
+Object toObject(Array opt)：返回一个代表当前实例的Object对象。参数可选，该数组可指定任意你想添加到输出的属性。
+String toString()：返回一个代表当前实例的字符串。
+String toSVG(Function opt)：返回代表当前实例的SVG字符串。参数是一个可选的回调函数，用于更进一步转换SVG对象。
+void transform(CanvasRenderingContext2D, boolean)：当渲染Object时对Context进行变换。当第二个参数为true时，context被变换到Object的左上角，这个用在渲染文本的时候。
+fabric.Point translateToCenterPoint(fabric.Point, String, String)：将指定的坐标点从原点平移到中点坐标（基于Object的维度）。第一个参数的X/Y坐标分别对应第二和第三个参数；第二个参数即水平原点，可选值为'left', 'center' or 'right'；第三个参数即垂直原点，可选值为'top', 'center' or 'bottom'。
+fabric.Point translateToOriginPoint(fabric.Point, String, String)：将指定的坐标点从中点坐标平移到原点（基于Object的维度）。第一个参数的X/Y坐标分别对应第二和第三个参数；第二个参数即水平原点，可选值为'left', 'center' or 'right'；第三个参数即垂直原点，可选值为'top', 'center' or 'bottom'。
+
+
+fabric.util 命名空间
+
+下级命名空间：
+array
+ease
+object
+string
+
+类属性成员：
+getElementStyle：static成员，从源码可知这是一个函数，返回给定元素的style属性值。
+
+类函数成员：
+static void addClass(DomElement, String)：为指定的DOM元素添加一个class。参数一为指定的DOM元素；参数二为class名字。
+static void addListenter(HTMLElement, String, Function)：为指定的HTML元素添加事件侦听器。参数一为指定的HTML元素；参数二为侦听的事件；参数三为事件处理函数。
+static void animate(Object opt)：在一段特定的时间内将值从一个状态改变成另一个状态，当指定的值进行改变的过程中，回调函数会被调用。参数为Object类型，可选，有如下成员：
+onChange(Function)：可选，回调函数，当值改变时被调用；
+onComplete(Function)：可选，回调函数，当值改变完成时被调用；
+startValue(Number)：可选，默认为0，起始值；
+endValue(Number)：可选，默认为100，终止值；
+byValue(Number)：可选，默认为100，修饰属性的值（译者注：没看懂这个参数的具体意义，但可以肯定是动画函数中起作用的一个参数，源码摘抄如下：function(t, b, c, d) {return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;}，byValue就是那个参数c）。
+easing(Function)：可选，缓动函数。
+duration(Number)：可选，默认500，动画时间，以毫秒为单位。
+static void clipContext(fabric.Object, CanvasRenderingContext2D)：文档中没有对该函数具体的描述。参数一为调用“clipTo”函数的Object；参数2为裁剪的Context。
+static void createAccessors(Object)：基于“stateProperties”数组，创建一个指定类型的存取器（即getXXX，setXXX）。参数为存取器类型。
+CanvasElement createCanvasElement(CanvasElement opt)：创建一个新的canvas元素，如果参数有传值，则以传入的canvas对新canvas进行初始化。
+static void createClass(Function opt, Object opt)：用于定义一个自定义类。参数一可选，要创建的类的父类；参数二可选，为所有该类实例都共享的属性集。
+static HTMLImageElement createImage()：创建一个<Img />元素（用于客户端和nodejs环境）。
+static Number degreesToRadians(Number)：角度值转为弧度值。参数为需要进行转换的角度值。
+static void drawArc(CanvasRenderingContext2D, Number, Number, Array)：画弧。无详细参数说明。
+static void drawDashedLine(CanvasRenderingContext2D, Number, Number, Array)：在两点之间画破折线，本函数用于在选中区域四周画破折线框。参数一为canvas的context；参数二为起始X坐标；参数三为超始Y坐标；参数四为终点X坐标；参数五为终点Y坐标；参数六为破折线样式。
+static void enlivenObjects(Array, Function, String, Function)：根据Object表现的fabric数据创建对应的fabric对象实例。参数一为要转换的Obejct数组；参数二为回调函数，在所有对应的fabric对象实例被创建时调用；参数三为转换的类的命名空间；参数四为更深入的转换回调，在每一个fabric实例创建的时候被调用。
+static boolean falseFunction()：函数内部就一个return false;
+static Array getBoundsOfArc(Number, Number, Number, Number, Number, Number, Number, Number, Number)：计算椭圆弧的四边框。参数一为起点X坐标；参数二为超点Y坐标；参数三为水平弧度；参数四为垂直弧度；参数五为水平axe的角度（译者注：实在不知道这个axe在这里什么意思）；参数六，取值1或0，表示弧在两点之间是大或是小（译者注：这个参数六也不知道是啥意思-_-）；参数七，取值1或0，表示弧的方向是顺时针或逆时针；参数八为终点的X坐标；参数九为终点的Y坐标。
+static HTMLElement | null getById(String | HTMLElement)：传入ID返回对应的HTML元素，如果不存在则返回null。
+static Object getElementOffset(HTMLElement)：返回指定HTML元素的偏移量。返回值的Object中有left和top两个成员属性。
+static String getFunctionBody(Function)：返回一个代表指定函数的字符串。
+static Object getKlass(String, String)：Returns klass "Class" object of given namespace（译者注：不懂这里的klass什么意思，所以不会译）。参数一为Object的类型，如"circle"（译者注：在源码中这个字符串第一个字母会被改成大写，如"Circle"）；参数二为获取klass "Class"的命名空间。
+static Object getPointer(Event, HTMLCanvasElement)：跨浏览器封装的鼠标坐标。参数一为鼠标事件对象；参数二为HTML的<canvas>对象，在该canvas上选中某对象。返回值中有x、y两个成员属性。
+static Number getRandomInt(Number, Number)：在两个指定的数之间，返回一个随机数。参数一为较小的数；参数二为较大的数。
+static void getScript(String, Function)：在HTML文档中插入一个script元素。参数一为script元素的src；参数二为回调函数，在script加载完成时调用。
+static Object getScrollLeftTop(HTMLElement, HTMLElement)：返回元素滚动的偏移量。参数一为在其上操作的HTML元素；参数二为顶层canvas元素。（译者注：字面意思看不出该函数的作用，该函数的源码大致意思就是算参数一的偏移量，至于参数二没太读懂它的意义）。
+static fabric.Object | fabric.PathGroup groupSVGElements(Array, Object opt)：SVG元素组（通常情况下这些都是从SVG文档中获取）。参数一为将形成一组的SVG元素组成的数组；参数二为要传入的选项。
+static Array invertTransform(Array)：将指定的变换矩阵进行倒置。参数为指定的变换矩阵。
+static boolean isTransparent(CanvasRenderingContext2D, Number, Number, Number)：当context在指定的点是透明的状态则返回true（考虑到可容忍阈值）。参数一个canvas的context；参数二为指定点的X坐标；参数三为指定点的Y坐标；参数四为可容忍阈值。
+static void loadImage(String, Function, Any opt, Object opt)：从指定的URL加载图片并传入回调函数。参数一为URL；参数二为回调函数，当图片加载完成后被调用；参数三为传给回调（参数二）的第一个参数；参数四为<img>的crossorigin属性（译者注：虽然文档里是写Object类型，实际上是String类型，可取值有"anoymous"和"use-credentials"，这是个HTML5属性，更多知道见下方）。
+注者注：（关于crossorgin详细描述，来自https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img，这一段就不翻译了^_^）：
+crossorigin HTML5
+This enumerated attribute indicates if the fetching of the related image must be done using CORS or not. CORS-enabled images can be reused in the <canvas> element without being tainted. The allowed values are:
+"anonymous"
+A cross-origin request (i.e., with Origin: HTTP header) is performed. But no credential is sent (i.e., no cookie, no X.509 certificate, and no HTTP Basic authentication is sent). If the server does not give credentials to the origin site (by not setting the Access-Control-Allow-Origin: HTTP header), the image will be tainted and its usage restricted.
+"use-credentials"
+A cross-origin request (i.e., with Origin: HTTP header) performed with credential is sent (i.e., a cookie, a certificate, and HTTP Basic authentication is performed). If the server does not give credentials to the origin site (through Access-Control-Allow-Credentials: HTTP header), the image will be tainted and its usage restricted.
+When not present, the resource is fetched without a CORS request (i.e., without sending the Origin: HTTP header), preventing its non-tainted usage in <canvas> elements. If invalid, it is handled as if the enumerated keyword anonymous was used. See CORS settings attributes for additional information.
+static HTMLElement makeElement(String, Object)：使用指定的属性集创建指定的HTML元素。参数一为HTML元素标签名；参数二为指定的属性集。
+static HTMLElement makeElementSelectable(HTMLElement)：将HTML元素变为可选。
+static HTMLElement makeElementUnselectable(HTMLElement)：将HTML元素变为不可选。
+static Array MultiplyTransformMatrices(Array, Array)：将两个变换矩阵相乘，返回结果变换矩阵。
+static Number | String parseUnit(Number | String)：在可行的情况下，将属性值转为像素值。如果不能进行转换，则返回原属性值。参数为需要转换的属性值。（译者注：从源码中可值，参数形如"10cm"，单位还可以是mm/cm/in/pt/pc/em）（译者再注：源码中还有第二个参数fontSize，如果没传该参数，则默认值为fabric.Text.DEFAULT_SVG_FONT_SIZE）
+static Array pupulateWithProperties(Object, Object)：将指定的属性集中的属性从一个源Object复制到目标Object。参数一为源Object；参数二为目标Object。（译者注，源码中还有第三个参数properties的属性集，类型为[object Array]，如果没有这个参数函数不会执行，不知道为什么文档中将这个参数丢了。）
+static Number radiansToDegrees(Number)：角度转弧度。参数为需要转换的角度值。
+static Array removeFromArray(Array, Any)：将指定的值从数组中移除。参数一为数组；参数二为需要移除的值。（译者注：如果指定的值出现多次，只会移除出现的第一个；内部是用indexOf和splice实现的，时间/空间代价都非常昂贵）。
+static void removeListener(HTMLElement, String, Function)：从指定的HTML元素上移除指定的侦听事件函数。
+static XMLHttpRequest Request(String, Object)：兼容各种浏览器发送请求。参数一为目标URL；参数二有两个成员：第一个成员为method，可选，默为个"GET"，可以为"POST"或"PUT"，第二个成员为onComplete的回调函数函数，函数的参数为该XMLHttpRequest实例。（译者注：从源码中可知Object还有第三个成员：paramaters，String类型，当method为GET时会加到URL上。）
+static void requestAnimFrame(Function, DOMElement)：该函数是基于http://paulirish.com/2011/requestanimationframe-for-smart-animating/，用于获取精确的起始时间。该函数需要作为方法的入口被调用。参数一回调函数；参数二为与动画相产的DOM元素。（译者注：该函数说明写得不清不楚，详细信息可参考上面这个URL。）
+static Object resolveNamespace(String)：分解给定的命名空间。参数为提定的命名空间，如" fabric.Image.filter "或"fabric"。
+static fabric.Point rotatePoint(fabric.Point, fabric.Point, Number)：围绕着指定的“原点（参数二）”，将指定的“点（参数一）”绕一个指定的“弧度（参数三）”值。
+static HTMLElement setStyle(HTMLElement, Object)：兼容各种浏览器，为指定的HTML元素设置样式。参数一为HTML元素；参数二为样式集。
+static Array toArray(Object)：将近似数组格式的Object转为数组
+static Number toFixed(Number | String, Number)：Number的toFixed函数的封装，但不同的是返回Number类型而不是String类型。参数一为需要进行舍入操作的数字或字符串；参数二为精度值。
+static fabric.Point transformPoint(fabric.Point, Array, boolean opt)：将变换矩阵作用于指定点。参数一为指点的点；参数二为变换矩阵；参数三可选，指明偏移量是否被应用。
+static HTMLElement wrapElement(HTMLElement, HTMLElement | String, Object opt)：用另一个HTML元素将指定的HTML元素进行包裹。参数一为需要被包裹的HTML元素，即内层HTML元素；参数二则为外层HTML元素；参数三为作用于外层HTML元素的属性集。
+
+
+
+
+fabric.Object
+构造函数：new Object() 这是所有2D图形类的根类。
+
+可触发的事件：event.added、event.removed、event.selected、event.modified、event.rotated、event.scaling、event.moving、event.mousedown、event.mouseup
+
+类属性成员：
+__uid(Number)：static成员，当创建SVG元素时，在内部使用的唯一ID值。
+NUM_FRACTION_DIGITS(Number)：static成员，是一个常量，定义了序列化Object时使用的分数。你可以使用它增加或减少left、top、scaleX、scaleY（等值）的精度。
+rotate：static成员，fabric.prototype.Object.setAngle的别名。
+angle(Number)：Object的旋转角度（以度为单位）。
+backgroundColor(String)：Object的背景颜色，只有赋值字符串时才起作用。
+borderColor(String)：Object为激活状态时，控制器的边框颜色。默认值为：rgba(102,153,255,0.75)。
+borderOpacityWhenMoving(Number)：当Object处于激活或移动状态时，控制器边框的透明度。默认值为：0.4。
+borderScaleFactor(Number)：Object控制器四边的缩放因子，默认为1。
+centeredRotation(boolean)：当属性为true时，通过控制器进行旋转的时候将以Object的中点为原点进行旋转，默认true。向下兼容提示：该属性替代了旧版本的centerTransform(boolean)属性。
+centeredScaling(boolean)：当属性为true时，将以Object的中点作为缩放的原点，默认false。向下兼容提示：该属性替代了旧版本的centerTransform(boolean)属性。
+clipTo(Function)：该属性是一个函数，决定了如何对Object进行裁剪（Context作为函数的和一个参数传入）。要注意Context的原点是Object的中点（而不是左上角的那个点）。
+cornerColor(String)：Object控制器（激活的时候）四角的颜色，默认值为：rgba(102,153,255,0.5)。
+cornerSize(Number)：Object控制器四角的大小，以像素为单位，默认值为：12。
+evented(boolean)：当属性为false时，该Object将不会成为事件的目标，默认true。所有的事件传递都会经过该属性。该属性是在1.3.4版本之后引入的。
+fill(String)：Object填充的颜色，默认值为：rgb(0,0,0)。
+fillRule(String)：该属性用于填充Object，只能接受值"nonzero"，默认值也是"nonzero"。向下兼容提示：该属性在1.4.2版本之前都是用fabric.Object.globalCompositeOperation函数替代的。
+flipX(boolean)：当属性为true时，Object将以水平翻转的样式被渲染。默认为false。
+flipY(boolean)：当属性为true时，Object将以垂直翻转的样式被演染。默认为false。
+globalCompositeOperation(String)：为Canvas的globalCompositeRule设置的混合规则。默认值为："source-over"。
+hasBorders(boolean)：当属性为false时，Object的控制器边框将不会被渲染。默认值为：true。
+hasControls(boolean)：当属性为false时，Object的控制器将不会显示，与此同时将无法操作Object。默认值为true。
+hasRotatingPoint(boolean)：当属性为false时，Object的控制器旋转点将不会显示和被选中。默认为true。
+height(Number)：Object的高度。默认为0。
+hoverCursor(String)：当鼠标覆盖在该Object上时使用的鼠标样式。默认为null。
+includeDefaultValues(boolean)：当设置为false时，Object序列化过程中将不会包含其默认值。默认为true。
+left(Number)：Object的左部位置，即x坐标，默认值为0。默认情况下，它是以Object中点进行计算。你可以通过设置originX={left/center/right}进行改变。
+lockMovementX(boolean)：当设置为true，Object的水平移动将被锁定。默认值为false。
+lockMovementY(boolean)：当设置为true，Object的垂直移动将被锁定。默认值为false。
+lockRotation(boolean)：当设置为true，Object的旋转将被锁定。默认值为false。
+lockScalingFlip(boolean)：当设置为true，Object将通过缩放到负值从而实现被翻转。默认值为false。
+lockScalingX(boolean)：当设置为true，Object水平方向将无法被缩放。默认值为false。
+lockScalingY(boolean)：当设置为true，Object垂直方向将无法被缩放。默认值为false。
+lockUniScaling(boolean)：当设置为true，Object将无法被锁定比例进行缩放。默认值为false。
+minScaleLimit(Number)：Object缩放比例最小值，默认值为0.01。
+oCoords(Object)：Object包含的控制器的坐标，默认值为null。
+opacity(Number)：Object的透明度，默认值为1。
+originX(String)：Object平移的水平起始点，可选值有"left"|"right"|"center"默为值为"left"。查阅http://jsfiddle.net/1ow02gea/40/获知originX和orginY是如何影响Group中的Object。
+originY(String)：Object平移的垂直起始点，可选值有"top"|"bottom"|"center"默为值为"top"。查阅http://jsfiddle.net/1ow02gea/40/获知originX和orginY是如何影响Group中的Object。
+padding(Number)：Object与其控制器边框中间的空白间距，以像素为单位，默认为0。
+perPixelTargetFind(boolean)：当设置为true时，canvas上的object是基于像素进行检索的，而不是基于边框盒模型。默认为false。
+rotatingPointOffset(Number)：Object控制器旋转点的偏移量（当hasRotatingPoint设置为true时才有效），默认值为40。
+scaleX(Number)：Object水平方向的缩放因子。默认值为1。
+scaleY(Number)：Object垂直方向的缩放因子，默认值为1。
+selectable(boolean)：当设置为false时，Object无法被选中编辑（无论是以像素点为基础或以组为基础），但是相应的事件仍然会触发。默认值为true。
+shadow(fabric.Shadow)：当前图形的Shadow对象，默认为null。
+stateProperties(Array)：属性列表，用于检查Object的状态是否改变（fabric.Object.hasChanged）。目的在于实现历史状态的redo和undo操作。
+stroke(String)：当该属性有定义的时候，Object将通过该属性定义的线条以及颜色进行渲染。默认为null。
+strokeDashArray(Array)：用于装载Object线条的破折号样式的数组（stroke属性必须已被定义）。
+strokeLineCap(String)：Object线条的终端样式，可选值有"butt"|"round"|"square"，默认值为"butt"。
+strokeLineJoin(String)：Object线条连接处边角的样式，可选值有"bevil"|"round"|"miter"，默认值为"miter"。
+strokeMiterLimit(Number)：Object线条链接处的最大斜角长度（当strokeLineJoin值设置为miter时起作用），默认值为10。
+strokeWidth(Number)：用于渲染Object的线条的宽度，默认值为1。
+top(Number)：Object的Y坐标，默认值为0。需要注意的是，默认情况下是相对于Object的中部。可以通过orginY(top|center|bottom)属性进行设置。
+transformMatrix(Array)：变换矩阵（类似于SVG的变换矩阵）。
+transparentCorners(boolean)：当设置为true时，Object的控制器边缘内部将会被渲染为透明，默认值为true。
+type(String)：Object的类型，可选值为"rect"|"circel"|"path"等，默认值为"object"。要注意的是，这个属性为只读，不能进行修改。如果你修改这个属性的值，Fabric框架特定部分（比如JSON加载）将会不正常。
+visible(boolean)：当设置为false，Object将不会在Canvas上被渲染。默认值为true。
+width(Number)：Object的宽度，默认值为0。
+
+类函数成员：
+void _renderControls(CanvasRenderingContext2D, boolean opt)：渲染Object的控制器以及边框。第一个参数是渲染的Context；第二个参数若设置为true，则相关的Context则不会被变换。
+void _restoreCompositeOperation(CanvasRenderingContext2D)：在Object变更渲染之后，保存之前的保存的画布操作（globalCompositeOperation）。参数则是指定在其上染上的Context。
+void _setupCompositeOperation(CanvasRenderingContext2D)：为指定的Object设置一个画布全局操作（globalCompositeOperation）。特定的Object自定义操作可以通过设置globalCompositeOperation属性进行设置。参数则是指定在其上染上的Context。
+void adjustPosition(String)：参数可选值为"left"|"center"|"right"。
+fabric.Object animate(String | Object, Number | Object)：对指定的属性进行动画变换。第一个参数是用于动画的属性（Object类型可指定多个）；当参数一为String时，参数二为变换的终点值，否则为对象选项。具体可参照：http://fabricjs.com/fabric-intro-part-2/#animation。
+fabric.Object bringForward(boolean opt)：将绘制的Object在栈中位置向上移动。当参数设置为true时，将Object置于下一个相交的Object之上。
+fabric.Object bringToFront()：将Ojbect移到绘图栈的最顶端。
+fabric.Ojbect center()：在Canvas的水平和垂直方向上居中Object。居中操作之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object centerH()：在Canavs的水平方向上居中Object。之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object centerV()：在Canvas的垂直方向上居中Object。之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object clone(Function, Array)：深度复制Object。第一个参数是回调函数，该回调的第一个参数是复制出来的Object；第二个参数是一个数组，装载着你想要添加到输出的所有属性。
+fabric.Object cloneAsImage(Function)：从Object创建出一个新的fabric.Image实例。参数是一个回调函数，该回调的第一个参数是复制出来的fabric.Image实例。
+Number complexity()：返回一个实例的复杂度。（译者注：该函数估计会被各子类重载，因为这个函数在Object类中直接返回0）。
+boolean containsPoint(fabric.Point)：检查指定的点是否包含在Object中。
+fabric.Object drawBorders(CanvasRenderingContext2D)：绘制Object盒模型的四周，要求有以下公共属性：width、height、padding、borderColor。
+fabric.Object drawControls(CanvasRenderingContext2D)：绘制Object盒模型的控制器，要求有以下公共属性：width、height、conerSize、padding。
+fabric.Object fxstraighten(Object)：和fabric.Object.prototype.straighten()的作用一样，只不过带了动画效果。参数是一个Object，里面有两个元素onComplete和onChange，分别是两个回调函数。onComplete在动画结束之后调用，onChange在动画的每一阶段分别调用。
+Any get(String)：最基本的getter函数，参数为想要获取的属性名。
+Number getAngle()：获得Object的旋转角度，以“度”为单位。
+Object getBoundingRect()：返回Object的边框矩形坐标。返回值是一个Object类型，其中包括了left、top、width、height四个元素。
+Number getBoundingRectHeight()：返回Object的边框矩形的高度。（版本1.0.4开始已废弃）
+Number getBoundingRectWidth()：返回Object的边框矩形的宽度。（版本1.0.4开始已废弃）
+fabric.Point getCenterPoint()：返回Object的真实中点坐标。
+Function getClipTo()：获得Object的裁剪函数。
+String getFill()：获得Object的填充颜色。
+boolean getFlipX()：获得Object的flipX属性。
+boolean getFlipY()：获得Object的flipY属性。
+fabric.Point getCenterPoint()：返回Object的真实中点坐标。
+Number getHeight()：获得Object的高度。
+Number getLeft()：获得Object左边的位置，即X坐标，以像素为单位。
+Object getLocalPointer(Event, Object opt)：获取一个点在Object上的本地坐标。注意：第二个参数可选。这个函数默认情况下是获取当前鼠标所在点的本地坐标，如果指定了第二个参数，则该函数将获取第二个参数指定的点的本地坐标。返回值和第二个函数都是Object，包函x、y两个成员。
+Number getOpacity()：获取Object的透明度，在0到1之间的数字。
+String getOriginX()：获取Object的原点X值。
+String getOriginY()：获取Object的原点Y值。
+fabric.Point getPointByOrigin(String, String)：如果Object有不同的原点，该函数可获得Object的原点坐标。第一个参数代表originX，可选值为："left"、"center"、"right"；第二个参数代表originY，可选值为："top"、"center"、"bottom"。
+Number getScaleX()：获取Object的scaleX属性值。
+Number getScaleY()：获取Object的scaleY属性值。
+Object getShadow()：获取Object的阴影，返回阴影实例。（译者注：不清楚为啥文档写的是返回Object而不是fabric.Shadow）。
+String getStroke()：获取Object的stroke属性值。
+Number getStrokeWidth()：获取Object的笔划宽度。
+String getSvgStyles()：获取svg输出的样式字符串。
+String getSvgTransform()：获取svg输出的变换字符串。
+String getSvgTransformMatrix()：从单一元素的变换矩阵中返回svg输出的变换字符串。
+Number getTop()：获得Object的顶部位置，即Y坐标，以像素为单位。
+Array getTransformMatrix()：获得Object的变换矩阵，即transformMatrix属性值。
+boolean getViewportTransform()：在可能的情况下，获取Object的视口变换。（译者注：源码中返回的是数组，不知道为啥文档中写的是返回boolean）。
+boolean getVisible()：获取Object是否可见。
+Number getWidth()：获取Object的宽度。
+boolean hasStateChanged()：当任一个Object的状态属性发生变化是，该函数返回true。
+initialize(Object)：构造函数，参数是要初始化的属性值。
+boolean intersectsWithObject(fabric.Object)：探测该Object是否与指定的Object有交集。
+boolean intersectsWithRect(Object, Object)：探测该Object是否与指定的矩型有交集。第一个参数是矩形左上角的点；第二个参数是矩形右上角的点。
+boolean isContainedWithinObject(fabric.Object)：探测该Object是否完全包含在另一个指定的Object中。
+boolean isContainedWithinRect(Object, Object)：探测该Object是否完全包含在指定的矩形中。第一个参数是矩形左上角的点；第二个参数是矩形右上角的点。
+boolean isControlVisible(String)：当指定的控制器可见是返回true，否测返回false。参数为控制器的名称，可选值有："tl"、"tr"、"bl"、"br"、"ml"、"mt"、"mr"、"mb"、"mtr"。
+boolean isType(String)：指定的类型和当前Object类型相同时，则返回true。
+fabric.Object moveTo(Number)：将Object移至绘制栈的指定层。
+fabric.Object remove()：将Object从Canvas上移除。
+render(CanvasRenderingContext2D, boolean opt)：在指定的Context上渲染Object。第一个参数是将要渲染的Object；第二个参数为true时，Context将不会进行变换。
+fabric.Object saveState(Object opt)：保存Object的状态。参数是一个Object，当状态保存过程中需要额外添加到Object中的状态属性。
+fabric.Object scale(Number)：缩放Object，X和Y轴方向上等值。参数即是缩放因子。
+fabric.Object scaleToHeight(Number)：将Object的高度缩放到指定值。考虑到盒模型，最好是使用scale进行x、y轴等比缩放。
+fabric.Object scaleToWidth(Number)：将Object的宽度缩放到指定值。考虑到盒模型，最好是使用scale进行x、y轴等比缩放。
+fabric.Object sendBackwards(boolean)：将Object在绘制栈中向下移一层。当参数为true时，将Object移到下一个与之相交的Object之后。
+fabric.Object sendToBack()：将Object移至绘制栈的最底部。
+fabric.Object set(String | Object, Object | Function)：为指定的属性设置值。当设置位置或维度（与left、top、scale、angle等相关联）的属性时，set函数Object的边框和控制器的位置。如果你要将它们也进行更新，需要调用setCoord()函数。第一个参数指定属性名或Object，为Object时函数将会遍历该Object的键值对；第二个参数指定属性值或Function，为Function时属性值将会作为参数传放，并返回一个新值。
+fabric.Object setAngle(Number)：设置Object的角度，以“度”为单位。
+fabric.Object setClipTo(Function)：设置Object的裁剪函数，即clipTo属性。
+fabric.Object setColor(String)：设置实例的颜色（Color是fill属性的别名）。
+fabric.Object setControlsVisibility(Object opt)：设置fabric.Object控制器的显示/隐藏状态。参数是一个要选的Object，可选成员如下所示：
+bl: boolean类型，为true则bottom-left控制器可用，false则不可用。
+br: boolean类型，为true则bottom-right控制器可用，false则不可用。
+mb: boolean类型，为true则middle-bottom控制器可用，false则不可用。
+ml: boolean类型，为true则middle-left控制器可用，false则不可用。
+mr: boolean类型，为true则middle-right控制器可用，false则不可用。
+mt: boolean类型，为true则middle-top控制器可用，false则不可用。
+tl: boolean类型，为true则top-left控制器可用，false则不可用。
+tr: boolean类型，为true则top-right控制器可用，false则不可用。
+mtr: boolean类型，为true则middle-top-rotate控制器可用，false则不可用。
+fabric.Object setControlVisible(String, boolean)：设置指定的控制器显示/隐藏状态。第一个参数是指定的控制器名，可选值有'tl', 'tr', 'br', 'bl', 'ml', 'mt', 'mr', 'mb', 'mtr'；第二个参数为true则指定的控制器可用，否则不可用。
+fabric.Object setCoords()：以当前的角度、宽高为基准，设置四角的的位置。可参考：https://github.com/kangax/fabric.js/wiki/When-to-call-setCoords。
+fabric.Object setFill(String)：设置Object的填充颜色。参数示例：rgb(0,0,0)。
+fabric.Object setFlipX(boolean)：设置Object的flipX属性值。
+fabric.Object setFlipY(boolean)：设置Object的flipY属性值。
+fabric.Object setGradient(String, Object)：设置（填充或画笔）的渐变色。无法向后兼容提示：在v1.1.0之前，该函数被命名为setGradientFill。第一个参数可选值为"stroke"或"fill"；第二个参数为Object，可选属性如下：
+属性名	类型	是否可选	默认值	说明
+type	String	是		渐变类型，"linear"或"radial"
+x1	Number	是	0	起始点x坐标
+y1	Number	是	0	起始点y坐标
+x2	Number	是	0	终点x坐标
+y2	Number	是	0	终点y坐标
+r1	Number	是	0	起始点半径（仅在径向渐变时生效）
+r2	Number	是	0	终止点半径（仅在径向渐变时生效）
+colorStops	Object	是		终止色，示例：{0: 'ff0000', 1: '000000'}
+示例1：
+object.setGradient('fill', {
+  type: 'linear',
+  x1: -object.width / 2,
+  y1: 0,
+  x2: object.width / 2,
+  y2: 0,
+  colorStops: {
+    0: 'red',
+    0.5: '#005555',
+    1: 'rgba(0,0,255,0.5)'
+  }
+});
+canvas.renderAll();
+示例2：
+object.setGradient('fill', {
+  type: 'radial',
+  x1: 0,
+  y1: 0,
+  x2: 0,
+  y2: 0,
+  r1: object.width / 2,
+  r2: 10,
+  colorStops: {
+    0: 'red',
+    0.5: '#005555',
+    1: 'rgba(0,0,255,0.5)'
+  }
+});
+canvas.renderAll();
+fabric.Object setLeft(Number)：设置Object的左边距，以像素为单位。
+fabric.Object setOpacity(Number)：设置Object的透明度，参数范围[0-1]。
+void setOptions(Object opt)：通过参数设置Object的属性。
+fabric.Object setOriginX(String)：设置originX属性值，可选值为："left", "right", "center"。
+fabric.Object setOriginY(String)：设置originY属性值，可选值为："top", "bottom", "center"。
+fabric.Object setPatternFill(Object)：设置Object的样式填充。参数的可选成员如下：
+参数名	类型	是否可选	默认值	说明
+source	String | HTMLImageElement			样式来源
+repeat	String	是	"repeat"	指定是否重复样式填充，可选值有："repeat"、"repeat-x"、"repeat-y"、"no-repeat"
+offsetX	Number	是	0	相对于左上角的水平偏移量
+offsetY	Number	是	0	相对于右上角的垂直偏移量
+示例：
+fabric.util.loadImage('http://fabricjs.com/assets/escheresque_ste.png', function(img) {
+  object.setPatternFill({
+    source: img,
+    repeat: 'repeat'
+  });
+  canvas.renderAll();
+});
+void setPositionByOrigin(fabric.Point, String, String)：根据Object的原点设置Object的值置。第一个参数指定的Object的新位置；第二个参数指定Object的水平原点，可选值有：'left', 'center' or 'right'；第三个参数指定Object的垂直原点，可选值有：'top', 'center' or 'bottom'。
+fabric.Object setScaleX(Number)：设置Object的scaleX属性值。
+fabric.Object setScaleY(Number)：设置Object的scaleY属性值。
+fabric.Object setShadow(Object | String opt)：设置Object的阴影。当参数为String类型时，可以如下格式设置："2px 2px 10px rgba(0,0,0,0.2)"；当参数为Object类型时，可选成员如下：
+属性名	类型	是否可选	默认值	说明
+color	String	是	rgb(0,0,0)	阴影颜色
+blur	Number	是	0	阴影模糊度
+offsetX	Number	是	0	水平偏移量
+offsetY	Number	是	0	垂直偏移量
+示例1：
+object.setShadow('2px 2px 10px rgba(0,0,0,0.2)');
+canvas.renderAll();
+示例2：
+object.setShadow({
+  color: 'red',
+  blur: 10,
+  offsetX: 20,
+  offsetY: 20
+});
+canvas.renderAll();
+fabric.Object setSourcePath(String)：设置Object的源路径。译者注：不清楚这里的source path是指啥。参数即为要设置的sourcePath属性值。
+fabric.Object setStroke(String)：设置Object的画笔。
+fabric.Object setStrokeWidth(Number)：设置Object的画笔宽度。
+fabric.Object setTop(Number)：设置Object的top属性，以像素为单位。
+fabric.Object setTransformMatrix(Array)：设置Object的transformMatrix属性。
+fabric.Object setupState()：建立Object的状态。
+fabric.Object setVisible(boolean)：设置Object的visible属性。
+fabric.Object straighten()：拉直Object（将Object从前当角度旋转到0、90、180、270度，取决于哪个角度比较靠近）。；
+Object toDatalessObject(Array opt)：返回代表该实例的无数据Object。参数可选，该数组可指定任意你想添加到输出的属性。
+String ToDataURL(Object)：将Object转换成类URL的字符串。参数可选成员如下：
+属性名	类型	是否可选	默认值	说明
+format	String	是	png	输出图片的格式，可选"jpeg"或"png"
+quality	Number	是	1	输出图片质量，[0-1]，jpeg格式生效
+multiplier	Number	是	1	缩放因子
+left	Number	是		裁剪区域左偏移量，v1.2.14引入
+top	Number	是		裁剪区域顶部偏移量，v1.2.14引入
+width	Number	是		裁剪区域宽度，v1.2.14引入
+height	Number	是		裁剪区域高度，v1.2.14引入
+fabric.Object toggle(String)：切换指定的属性，true变为false，false变为true。
+Object toJSON(Array opt)：返回一个代表当前实例的JSON对象。参数可选，该数组可指定任意你想添加到输出的属性。
+fabric.Point toLocalPoint(fabric.Point, originX, originY)：返回指定的点在当前Object的本地坐标。第一个参数指定一个需要转换的全局坐标；第二个参数指定了水平原点，可选值有'left', 'center' or 'right'；第三个参数指定了垂直原点，可选值有'top', 'center' or 'bottom'。
+Object toObject(Array opt)：返回一个代表当前实例的Object对象。参数可选，该数组可指定任意你想添加到输出的属性。
+String toString()：返回一个代表当前实例的字符串。
+void transform(CanvasRenderingContext2D, boolean)：当渲染Object时对Context进行变换。当第二个参数为true时，context被变换到Object的左上角，这个用在渲染文本的时候。
+fabric.Point translateToCenterPoint(fabric.Point, String, String)：将指定的坐标点从原点平移到中点坐标（基于Object的维度）。第一个参数的X/Y坐标分别对应第二和第三个参数；第二个参数即水平原点，可选值为'left', 'center' or 'right'；第三个参数即垂直原点，可选值为'top', 'center' or 'bottom'。
+fabric.Point translateToOriginPoint(fabric.Point, String, String)：将指定的坐标点从中点坐标平移到原点（基于Object的维度）。第一个参数的X/Y坐标分别对应第二和第三个参数；第二个参数即水平原点，可选值为'left', 'center' or 'right'；第三个参数即垂直原点，可选值为'top', 'center' or 'bottom'。
+
+
+
+
+
+
+fabric 命名空间
+
+下级命名空间：
+Collection、Observable、util
+
+包含的类：
+BaseBrush、Canvas、Canvas、Circle、CircleBrush、Color、Ellipse、Gradient、Group、Image、Intersection、IText、Line、Object、Path、PathGroup、Pattern、PatternBrush、PencilBrush、Point、Polygon、Polyline、Rect、Shadow、SprayBrush、StaticCanvas、Text、Triangle
+
+类属性成员：
+DPI：static成员，屏幕上每英寸的像素数，默认情况下为96，可以根据实际的情况进行修改。
+isLikelyNode(boolean)：static成员，在nodejs环境中，该值为true。
+isTouchSupported(boolean)：static成员，在触摸屏环境下，该值为true。
+SHARED_ATTRIBUTE(Array)：static成员，从SVG元素转换得到的所有属性。
+
+类函数成员：
+static Object createCanvasForNode(Number, Number, Object opt, Object opt)：只有在node.js环境中该函数才可用。参数一为画布的宽；参数二为画布高；参数三可选，传递给FabricCanvas的参数选项；参数四可选，传递给NodeCanvas的参数选项。返回值为封装的canvas实例。
+static Object getCSSRule(SVGDocument)：返回指定的SVG文档的CSS规则。参数为SVG文档，返回值为CSS规则。
+static Object getGradientDefs(SVGDocument)：转换指定的SVG文档，返回的有渐变的定义。返回的渐变定义中，key为渐变元素的id，value为渐变定义。
+static void loadSVGFromString(String, Function, Function opt)：传入一个SVG文档相关的字符串，进行转换并传给一系列fabric元素。参数一为需要转换的字符串；参数二，无说明；参数三为更进一步的回调，在每个fabric元素被创建时进行调用。
+static void loadSVGFromURL(String, Function, Function opt)：传入一个SVG文档相关的URL，进行解析转换并传给一系列的fabric元素。编者注：SVG是通过XMLHttpRequest获取的，所有遵守SOP原则（译者注：就是要在同一个域名下）。参数一为URL；参数二，无说明；参数三为更进一步的回调，在每个fabric元素被创建时进行调用。
+static void log(Any opt)：console.log函数的封装。参数为需要输出的任意值。
+static Object parseAttributes(DOMElement, Array)：传入给完的DOM元素和需要转换的指定属性数组，返回一个属性相关的键值对对象。向上递归转换父节点。参数一为需要转换的DOM元素；参数二为需要转换的属性数组。
+static void parseElements(Array, Function, Object opt, Function opt)：将一个SVG元素的数据转换为一系列相关的fabric.*相关的实例。参数一为需要转换的SVG元素数组；参数二为回调函数，参数为fabric元素的数组，该数组是从SVG元素数组转换得到的；参数三为可选的选项对象，该参数无详细说明；参数四为更进一步的回调，在每个fabric元素被创建时进行调用。
+static void parseFontDeclaration(String, Object)：转换字体的短声明，将它的属性加入Object中。参数一为字体声明；参数二为转换结果。
+static Array parsePointsAttribute(String)：转换“点”的属性，返回点对应的数组。参数为代表点的字符串，译者注：通过源码可知该字符串的格式为x1,y1,x2,y2,x3,y3,...
+static Object parseStyleAttribute(SVGElement)：转换“style”属性，返回相关的样式数组。参数为需要转换的SVG元素。译者注：通过源码可知不单是SVG元素，DOM元素也可以通过该函数进行转换。
+static void parseSVGDocument(SVGDocument, Function, Function opt)：转换一个SVG文档，将它转为fabirc.*相关的实例数组，并将该数组传给回调函数。参数一为需要转换的SVG文档；参数二为回调函数，当SVG文档完成转换后被调用，回调的参数为转换后的fabric.*实例相关的Array；参数三为更进一步的SVG转换回调，在各个fabric元素被成功创建后时进行调用。
+static Array parseTransformAttribute(String)：转换“变换”属性，返回与之相关的数组。参数为包含着所有“变换”相关的属性的字符串。返回值包含着6个成员的变换矩阵。
+static void warn(Any opt)：console.warn函数的封装。
+
+
+
+
+
+
+
+
+
+
+
+
+fabric.Canvas
+构造函数：new Canvas();
+
+可触发的事件： object:modified、object:rotating、object:scaling、object:moving、object:selected、before:selection:cleared、selection:cleared、selection:created、path:created、mouse:down、mouse:move、mouse:up、mouse:over、mouse:out
+
+父类：fabric.StaticCanvas
+
+类属性成员：
+allowTouchScrolling(boolean)：默认false，指明使用触摸屏或者在canvas上拖动对象时，屏幕是否跟着滚动
+backgroundColor(string|fabric.Pattern)：Canvas实例的背景色，需要通过fabric.StaticCanvas的setBackgroundColor()函数来设置
+backgroundImage(fabric.Image)：默认null，Canvas实例的背景图片。需要通过fabric.StaticCanvas的setBackgroundImage()函数来设置。如果要设置图片的透明度和长宽，需要通过fabric.Image的opacity属性和width、height属性来设置。
+centeredRotation(boolean)：默认false，当设置为true时Canvas上的所有对象使用中间点（而不是默认的左上角）作为旋转的原点
+centeredScaling(boolean)：默认false，当设置为true时，Canvas上的所有对象使用中间点（而不是默认的左上角）作为缩放的原点
+clipTo(function)：这是一个funcion类型的属性成员，一般用于回调。作用是将整个Canvas进行裁剪并传递给第一个参数，以下是文档中附带的例子：
+canvas.clipTo = function(ctx) {
+  ctx.arc(0, 0, 60, 0, Math.PI*2, true);
+};
+// or passing to fabric.Element options
+new fabric.Element('myCanvas', {
+  clipTo: function(ctx) {
+    ctx.arc(0, 0, 60, 0, Math.PI*2, true);
+  }
+});
+containerClass(string)：默认"canvas-container"，包裹Canvas元素的默认元素类（<div>）
+controlsAboveOverlay(boolean)：默认false，指明对象的控制器（borders/controls）是否渲染在前景图片之上
+defaultCursor(string)：默认"default"，整个Canvas上使用的默认光标
+freeDrawingCursor(string)：默认"crosshair"，自由绘画状态下的光标样式
+FX_DURATION(number)：默认500，单位毫秒（ms）。动画的持续时间，给fx*的方法使用。
+hoverCursor(string)：默认"move"，当鼠标覆盖在Canvas上任一对象上时的光标样式。
+imageSmoothingEnabled(boolean)：默认true。指明Canvas是否使用图片的平滑特性。
+includeDefaultValues(boolean)：默认true，指明Canvas序列化时是否包括默认值。
+interactive(boolean)：默认true。指明Canvas是否可以进行交互，该属性的值不可更改。
+moveCursor(string)：默认"move"，移动Canvas任一对象时的光标样式。
+overlayColor(string|fabric.Pattern)：Canvas的前景色，可以通过fabric.StaticCanvas的setOverlayColor()函数进行设置。
+overlayImage(fabric.Image)：默认null，Canvas的前景图。可以通过fabric.StaticCanvas的setOverlayImage()函数进行设置。如果要设置位置，可通过fabric.Image的left和top属性进行设置。
+perPixelTargetFind(boolean)：默认false。当设置为true，对象的检测会以像互点为基础，而不是以边界的盒模型为基础。
+preserveObjectStacking(boolean)：默认false。指明对象被选定的时候，是否留在当前的栈位置上。如果设置为false，对象会被移至最顶端，并被渲染为选择组的一部分。
+renderOnAddRemove(boolean)：默认为true。指明当调用fabric.Collection.add、fabric.Collection.insertAt、fabric.Collection.remove函数时是否重新渲染Canvas。当大量的插入或移除对象时，将这个属性设置为false，可以获得高的效率。
+rotationCursor(string)：默认"crosshair"，旋转点的光标样式。
+selection(boolean)：默认true。指明分组选择是否可用。
+selctionBorderColor(string)：默认"rgba(255,255,255,0.3)"，选择边框的颜色。
+selectionColor(string)：默认"rgba(100,100,255,0.3)"，对象被选中时的颜色。
+selectionDashArray(Array)：选择框的点状样式数组。如果非空，选择空即为点状样式。
+selectionLineWidth(number)：默为1。对象或组被选中时，选择框的线条宽度。
+skipTargetFind(boolean)：默认false。设置为true时，当鼠标覆盖在Canvas上时，对象的探测均会失效。这个属性可用于提高性能。
+stateful(boolean)：默认true。指明对象的状态是否会被保存。
+svgViewportTransformation(boolean)：默认true。当设置为true时，getSvgTransform()函数将会StaticCanvas.viewprotTransform赋值给SVG transform；当设置为true时，被拉伸的Canvas将会把拉伸效果应用到SVG的输出。
+targetFindTolerance(number)：默认0。对象探测的误差像素点阈值。
+uniScaleTransform(boolean)：默认false。当设置为true时，对象可以固定一边被进行拉伸。
+viewportTransform(Array)：应用于视口的拉伸（译者注：这个属性完全不知道在干啥）
+
+类函数成员：
+void _setCursorFromEvent(e,target)：根据光标在Canvas上的位置对光标进行设置。编者注：这个函数在opera上有很大的BUG。
+fabric.Canvas absolutePan(fabric.Point)：将画布视图的原点移至point指定的点。
+fabric.Canvas beingForward(fabric.Object,boolean)：将指定对象在栈中称前一位。第二个参数如果设置为true，将会把指定对象在Canvas上移至到覆盖它的对象之上。
+fabric.Canvas bringToFront(fabric.Object)：将指定的对象移至栈顶。
+fabric.Canvas calcOffset()：计算Canvas相对于document的偏移量。这个函数被附加给Window的resize事件的处理函数。
+fabric.Canvas centerObject(fabric.Object)：在水平和垂直方向上居中指定的对象。在居中之后，你可能属要调用对象上的setCoords()函数来更新controls的区域。
+fabric.Canvas centerObjectH(fabric.Object)：在水平方向上居中指定的对象。在居中之后，你可能属要调用对象上的setCoords()函数来更新controls的区域。
+fabric.Canvas centerObjectV(fabric.Object)：在垂直方向上居中指定的对象。在居中之后，你可能属要调用对象上的setCoords()函数来更新controls的区域。
+fabric.Canvas clear()：清空Canvas上的所有实例，包括背景、对象等。
+fabric.Canvas clearContext(CanvasRenderingContext2D)：清除指定的Canvas的元素。
+clone(callback opt, Array opt)：复制Canvas的实例。callback是一个回调函数，它的第一个参数用于接收被复制的对象实例；第二个参数放置着包含在被复制的Canvas以及它的子元素中的属性。
+cloneWithoutData(callback opt)：复制Canvas的实例，但不复制其包含的数据。这个函数是复制必要的维度、裁剪属性等等，但它们的数据会被置空（你可以自己计算出这些属性的值）。callback是一个回调函数，它的第一个参数用于接收被复制的对象的实例。
+boolean containsPoint(Event, fabric.Object)：检测点是否包含在给定的Object的区域中。
+fabric.Canvas deactivateAll()：使Canvas上活动的Object无效。移除任何处于活动状态的的Group或object。
+fabric.Canvas deactivateAllWithDispatch()：使Canavs上活动的Object无效，并且分发合适的事件。
+fabric.Canvas discardActiveGroup()：抛弃当前处于活动状态的Group。
+fabric.Canvas discardActiveObject()：抛弃当前处于活动状态的Object。
+fabric.Canvas dispose()：清楚Canvas上的所有元素，并移除所有的侦听事件。
+drawControls(CanvasRenderingContext2D)：绘制Object的控制器（边框和控制器，就是那几个小方块）。
+findTarget(Event, boolean)：确定了我们点中了哪个Object。如果第二个参数为true，则会跳过Group，只有Object会被探测到。
+fabric.Canvas fxCenterObjectH(fabric.Object, callback object opt)：让指定的Object水平居中，带有动画效果。第二个参数是一个回调的Object，可以有两个属性，onComplete和onChange两个属性（都是Function）。
+fabric.Canvas fxCenterObjectV(fabric.Object, callback object opt)：让指定的Object垂直居中，带有动画效果。第二个参数是一个回调的Object，可以有两个属性，onComplete和onChange两个属性（都是Function）。
+fabric.Canvas fxRemove(fabirc.Object, callback object opt)：和fabric.Canvas.remove()函数效果一样，只不过带了动画效果。第二个参数是一个回调的Object，可以有两个属性，onComplete和onChange两个属性（都是Function）。
+fabric.Canvas fxStraightenObject(fabric.Object)：和fabric.Canvas.prototype.straightenObject()效果一样，只不过带了动画效果。
+fabric.Group getActiveGroup()：获取当前处于活动状态的Group。
+fabric.Object getActiveObject()：获取当前处于活动状态的Object。
+Object getCenter()：返回Canvas的中点坐标。返回值中包含了left和top两个属性。
+CanvasRenderingContext2D getContext()：返回Canvas的Context。
+HTMLCanvasElement getElement()：返回与Canvas相关联的<canvas>HTML元素。
+Number getHeight()：获取Canvas的高度，以像素为单位。
+Object getPointer(Event)：返回与Canvas相关联的点坐标，返回值中包含了x和y两个属性。
+CanvasRenderingContext2D getSelectionContext()：返回绘置选中对象的Canvas的Context。
+HTMLCanvasElement getSelectionElement()：返回绘置着选中对象的Canvas的相关联的<canvas>HTML对象。
+Number getWidth()：获取Canvas的宽度，以像素为单位。
+Number getZoom()：返回Canvas的缩放级别。
+Object initialize(HTMLElement | String, Object opt)：构造函数。第一个参数指定需要实例代的HTML元素；第二个参数则指定了需要预先设置的一些属性（可选）。
+boolean isTargetTransparent(fabric.Object, Number x, Number y)：当Object在指定的坐标上是透明的，则返回true。
+fabric.Canvas loadFromDatalessJSON(String | Object, Function, Function opt)：从无数据的json中还原出Canvas。这个无数据的json必须符合fabric.Canvas.toDatalessJSON()。这个函数有三个参数，第一个参数是需要还原的json数据；第二个参数是一个回调函数，这个回调函数在解析json，相关的Object（如fabric.Image）初始化时被调用；第三个参数也是一个回调函数，可选，在每一个元素创建之后被调用。编者注：这个函数在1.2.2版本后已被废弃。
+fabric.Canvas loadFromJSON(String | Object, Function, Function opt)：从指定的json数据中还原出Canvas。这个json数据必须符合fabric.Canvas.toJSON()。这个函数有三个参数，第一个参数是需要还原的json数据；第二个参数是一个回调函数，这个回调函数在解析json，相关的Object（如fabric.Image）初始化时被调用；第三个参数也是一个回调函数，可选，在每一个元素创建之后被调用。文档中的示例：
+⑴
+canvas.loadFromJSON(json, canvas.renderAll.bind(canvas));
+⑵
+canvas.loadFromJSON(json, canvas.renderAll.bind(canvas), function(o, object) {
+  // `o` = json object
+  // `object` = fabric.Object instance
+  // ... do some stuff ...
+});
+fabric.Canvas moveTo(fabric.Object, Number)：将指定的Object移动到栈的指定位置。
+onBeforeScaleRotate()：这是一个回调函数，在Object缩放或旋转时被调用。
+fabric.Canvas relativePan(fabric.Point)：整个视口，根据给定的点形成向量进行移动。译者注：没看懂这里整个视口是怎么移动的。
+removeListeners()：移除所有的事件侦听函数。
+fabric.Canvas renderAll(boolean)：将上层的Canvas以及从属的Canvas全部进行渲染。如果需要所有的顶层Images重新进行渲染，则将参数设置为true。
+fabric.Canvas renderTop()：只渲染顶层的Canvas，同时也会渲染选中的Group。
+fabric.Canvas sendBackwards(fabric.Object, boolean opt)：将指定的Object在栈中向下移一位。如果第二个参数设置为true，则会在Canvas上将指定的Object放置在下一个与之有交集的Object的后面。
+fabric.Canvas sendToBack(fabric.Object)：将指定的Object置于栈中的最底部。
+fabric.Canvas setActiveGroup(fabric.Group)：设置指定的Group为活动状态。
+fabric.Canvas setActiveObject(fabric.Object, Event opt)：设置指定的Object为活动状态。第二个参数通过object:selected事件进行传递。
+fabric.Canvas setBackgroundColor(string | fabric.Pattern, Function)：设置Canvas的背景色。第二个参数是个回调函数，在背景色设置之后被调用。文档中示例：
+⑴
+canvas.setBackgroundColor('rgba(255, 73, 64, 0.6)', canvas.renderAll.bind(canvas));
+⑵
+canvas.setBackgroundColor({
+  source: 'http://fabricjs.com/assets/escheresque_ste.png'
+}, canvas.renderAll.bind(canvas));
+⑶
+canvas.setBackgroundColor({
+  source: 'http://fabricjs.com/assets/escheresque_ste.png',
+  repeat: 'repeat',
+  offsetX: 200,
+  offsetY: 100
+}, canvas.renderAll.bind(canvas));
+fabric.Canvas setBackgroundImage(fabric.Image | string, Function, Object opt)：设置Canvas的背景图片。第二个参数是回调函数，当图片被成功加载被设置成背景后被调用；第三个是可选参数，将设置给背景图的一些属性。文档中示例：
+⑴
+canvas.setBackgroundImage('http://fabricjs.com/assets/honey_im_subtle.png', canvas.renderAll.bind(canvas), {
+  // Needed to position backgroundImage at 0/0
+  originX: 'left',
+  originY: 'top'
+});
+⑵
+canvas.setBackgroundImage('http://fabricjs.com/assets/honey_im_subtle.png', canvas.renderAll.bind(canvas), {
+  opacity: 0.5,
+  angle: 45,
+  left: 400,
+  top: 400,
+  originX: 'left',
+  originY: 'top'
+});
+⑶
+fabric.Image.fromURL('http://fabricjs.com/assets/honey_im_subtle.png', function(img) {
+   img.set({width: canvas.width, height: canvas.height, originX: 'left', originY: 'top'});
+   canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+});
+⑷
+canvas.setBackgroundImage('http://fabricjs.com/assets/honey_im_subtle.png', canvas.renderAll.bind(canvas), {
+  width: canvas.width,
+  height: canvas.height,
+  // Needed to position backgroundImage at 0/0
+  originX: 'left',
+  originY: 'top'
+});
+⑸
+canvas.setBackgroundImage('http://fabricjs.com/assets/honey_im_subtle.png', canvas.renderAll.bind(canvas), {
+  opacity: 0.5,
+  angle: 45,
+  left: 400,
+  top: 400,
+  originX: 'left',
+  originY: 'top',
+  crossOrigin: 'anonymous'
+});
+setCursor(string)：设置光标的样式。参数的可选值有：[ [<url> [<x> <y>]?,]* 
+[ auto | default | none |
+context-menu | help | pointer | progress | wait | 
+cell | crosshair | text | vertical-text | 
+alias | copy | move | no-drop | not-allowed | grab | grabbing | 
+e-resize | n-resize | ne-resize | nw-resize | s-resize | se-resize | sw-resize | w-resize | ew-resize | ns-resize | nesw-resize | nwse-resize | col-resize | row-resize | all-scroll | zoom-in | zoom-out 
+] ]。可参考：http://www.w3.org/TR/css3-ui/#cursor
+fabric.Canvas setDimensions(Object, Object opt)：设置Canvas的长宽。第一个参数有两个属性width和height，分别表示要设置的长宽，类型为Number或string；第二个参数有两个属性backstoreOnly和cssOnly，这两个均为boolean类型，当cssOnly为true时，width和height的设置需要带上单位（px/%/em等）。当backstroeOnly为true时，则将设置的长宽以backstore的模式进行设置。（译者注：不太清楚这里的backstore什么意思，去查了字典也没查到这个词）
+fabric.Canvas setOverlayColor(string | fabric.Pattern, Function)：设置Canvas的前景色。第一个参数是用来设置的颜色；第二个参数是个回调函数，当前景色设置后被调用。文档中示例：
+⑴
+canvas.setOverlayColor('rgba(255, 73, 64, 0.6)', canvas.renderAll.bind(canvas));
+⑵
+canvas.setOverlayColor({
+  source: 'http://fabricjs.com/assets/escheresque_ste.png'
+}, canvas.renderAll.bind(canvas));
+⑶
+canvas.setOverlayColor({
+  source: 'http://fabricjs.com/assets/escheresque_ste.png',
+  repeat: 'repeat',
+  offsetX: 200,
+  offsetY: 100
+}, canvas.renderAll.bind(canvas));
+fabric.Canvas setOverlayImage(fabric.Image | string, Function, Object opt)：设置Canvas的前景图。第一个参数是要设置的前景图；第二个参数是个回调函娄，在成功加载图片并设置为前景图中被调用；第三个参数是个可选参数，是要设置给前景图的选项。文档中示例：
+⑴
+canvas.setOverlayImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
+  // Needed to position overlayImage at 0/0
+  originX: 'left',
+  originY: 'top'
+});
+⑵
+canvas.setOverlayImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
+  opacity: 0.5,
+  angle: 45,
+  left: 400,
+  top: 400,
+  originX: 'left',
+  originY: 'top'
+});
+⑶
+fabric.Image.fromURL('http://fabricjs.com/assets/jail_cell_bars.png', function(img) {
+   img.set({width: canvas.width, height: canvas.height, originX: 'left', originY: 'top'});
+   canvas.setOverlayImage(img, canvas.renderAll.bind(canvas));
+});
+⑷
+canvas.setOverlayImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
+  width: canvas.width,
+  height: canvas.height,
+  // Needed to position overlayImage at 0/0
+  originX: 'left',
+  originY: 'top'
+});
+⑸
+canvas.setOverlayImage('http://fabricjs.com/assets/jail_cell_bars.png', canvas.renderAll.bind(canvas), {
+  opacity: 0.5,
+  angle: 45,
+  left: 400,
+  top: 400,
+  originX: 'left',
+  originY: 'top',
+  crossOrigin: 'anonymous'
+});
+fabric.Canvas setViewportTransform(Array)：设置Canvas的变换。参数则属于context.transform的一种表现形式。
+fabric.Canvas setZoom(Number)：设置Canvas的缩放程度。当参数小于1时，Canvas则缩小。
+fabric.Canvas straightenObject(fabric.Object)：将Object拉直（译者注：不太清楚这里拉直什么意思）。
+string toDatalessJSON(Array opt)：返回代表Canvas的无数据JSON。参数是一个数组，指定了需要额外包含在输出中的属性。
+Object toDatalessObject(Array opt)：返回代表Canvas的无数据Object。参数是一个数组，指定了需要额外包含在输出中的属性。
+string toDataURL(Object opt)：将Canvas转为数据串形式的URL。要注意，当multiplier被使用的时候，裁剪区域会被适当缩放。Object是一个可选值，附带着以下属性：
+format  string，可选，默认"png"，指定输出的图像格式，"jpeg"或"png"
+quality  Number，可选，默认1，取值范围0到1，只对于"jpeg"格式有效
+multiplier  Number，可选，默认1，缩放因子
+left  Number，可选，裁剪的左偏移量
+top  Number，可选，裁剪的顶部偏移量
+width  Number，可选，裁剪宽度
+height  Number，可选，裁剪高度
+文档中示例：
+⑴
+var dataURL = canvas.toDataURL({
+  format: 'jpeg',
+  quality: 0.8
+});
+⑵
+var dataURL = canvas.toDataURL({
+  format: 'png',
+  left: 100,
+  top: 100,
+  width: 200,
+  height: 200
+});
+⑶
+var dataURL = canvas.toDataURL({
+  format: 'png',
+  multiplier: 2
+});
+string toDataURLWithMultiplier(string, Number, Number)：将Canavs转成数据串格式的URL，通过缩放因子可以对图片进行缩放。第一个参数是输入的格式，jpeg或png；第二个参数是缩放因子；第三个参数则是输出的质量，取值为0到1之间。本函数已废弃。
+string toJSON(Array)：将Canvas序列化为JSON数据。参数是一个数组，包含你想要额外添加到输出数据中的属性。文档中示例：
+⑴
+var json = canvas.toJSON();
+⑵
+var json = canvas.toJSON(['lockMovementX', 'lockMovementY', 'lockRotation', 'lockScalingX', 'lockScalingY', 'lockUniScaling']);
+⑶
+canvas.includeDefaultValues = false;
+var json = canvas.toJSON();
+Object toObject(Array)：将Canvas序列化为Object数据。参数是一个数组，包含你想要额外添加到输出数据中的属性。
+string toString()：返回一个代表Canvas实例的字符串。
+string toSVG(Object opt, Function opt)：返回一个代表Canvas的SVG数据。参数比较复杂，如下表所示：
+参数	可选	描述
+参数一Object类型	是	SVG输出的可选属性
+属性说明
+属性名	类型	可选	默认值	描述
+suppressPreamble	boolean	是	false	如果为true，则xml标记不会被包含
+viewBox	Object	是		SVG视图盒模型的属性
+属性说明
+属性名	类型	可选	描述
+x	Number	是	盒模型的x坐标
+y	Number	是	盒模型的y坐标
+width	Number	是	盒模型的宽度
+height	Number	是	盒模型的高度
+
+encoding	string	是	UTF-8	SVG输出的编码
+
+参数二回调函数Function类型	是	这是一个回调函数，在每个Object转换成SVG描述符时被调用
+文档中示例：
+⑴
+var svg = canvas.toSVG();
+⑵
+var svg = canvas.toSVG({suppressPreamble: true});
+⑶
+var svg = canvas.toSVG({
+  viewBox: {
+    x: 100,
+    y: 100,
+    width: 200,
+    height: 300
+  }
+});
+⑷
+var svg = canvas.toSVG({encoding: 'ISO-8859-1'});
+⑸
+var svg = canvas.toSVG(null, function(svg) {
+  return svg.replace('stroke-dasharray: ; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; ', '');
+});
+fabric.Canvas zoomToPoint(fabric.Point, Number)：设置Canvas以指定的点为中心进行缩放。第一个参数即为指定的中心点；第二个参数为缩放级别，小于1即为缩小。
+
+
+
+
+
+
+
+fabric.Rect
+构造函数：new Rect()
+
+父类：fabric.Object
+
+类属性成员：
+ATTRIBUTE_NAMES：static成员，转换SVG元素时产生的属性名称列表（在fabric.Line.fromElement函数中使用）。
+angle(Number)：Object的旋转角度（以度为单位）。
+backgroundColor(String)：Object的背景颜色，只有赋值字符串时才起作用。
+borderColor(String)：Object为激活状态时，控制器的边框颜色。默认值为：rgba(102,153,255,0.75)。
+borderOpacityWhenMoving(Number)：当Object处于激活或移动状态时，控制器边框的透明度。默认值为：0.4。
+borderScaleFactor(Number)：Object控制器四边的缩放因子，默认为1。
+centeredRotation(boolean)：当属性为true时，通过控制器进行旋转的时候将以Object的中点为原点进行旋转，默认true。向下兼容提示：该属性替代了旧版本的centerTransform(boolean)属性。
+centeredScaling(boolean)：当属性为true时，将以Object的中点作为缩放的原点，默认false。向下兼容提示：该属性替代了旧版本的centerTransform(boolean)属性。
+clipTo(Function)：该属性是一个函数，决定了如何对Object进行裁剪（Context作为函数的和一个参数传入）。要注意Context的原点是Object的中点（而不是左上角的那个点）。
+cornerColor(String)：Object控制器（激活的时候）四角的颜色，默认值为：rgba(102,153,255,0.5)。
+cornerSize(Number)：Object控制器四角的大小，以像素为单位，默认值为：12。
+evented(boolean)：当属性为false时，该Object将不会成为事件的目标，默认true。所有的事件传递都会经过该属性。该属性是在1.3.4版本之后引入的。
+fill(String)：Object填充的颜色，默认值为：rgb(0,0,0)。
+fillRule(String)：该属性用于填充Object，只能接受值"nonzero"，默认值也是"nonzero"。向下兼容提示：该属性在1.4.2版本之前都是用fabric.Object.globalCompositeOperation函数替代的。
+flipX(boolean)：当属性为true时，Object将以水平翻转的样式被渲染。默认为false。
+flipY(boolean)：当属性为true时，Object将以垂直翻转的样式被演染。默认为false。
+globalCompositeOperation(String)：为Canvas的globalCompositeRule设置的混合规则。默认值为："source-over"。
+hasBorders(boolean)：当属性为false时，Object的控制器边框将不会被渲染。默认值为：true。
+hasControls(boolean)：当属性为false时，Object的控制器将不会显示，与此同时将无法操作Object。默认值为true。
+hasRotatingPoint(boolean)：当属性为false时，Object的控制器旋转点将不会显示和被选中。默认为true。
+height(Number)：Object的高度，默认为0。
+hoverCursor(String)：当鼠标覆盖在该Object上时使用的鼠标样式。默认为null。
+includeDefaultValues(boolean)：当设置为false时，Object序列化过程中将不会包含其默认值。默认为true。
+left(Number)：Object的左边位置，即X坐标。注意：在默认情况下，是以Object中点进行计算，你可以设置originx={left|center|right}进行改变。默认值为0。
+lockMovementX(boolean)：当设置为true，Object的水平移动将被锁定。默认值为false。
+lockMovementY(boolean)：当设置为true，Object的垂直移动将被锁定。默认值为false。
+lockRotation(boolean)：当设置为true，Object的旋转将被锁定。默认值为false。
+lockScalingFlip(boolean)：当设置为true，Object将通过缩放到负值从而实现被翻转。默认值为false。
+lockScalingX(boolean)：当设置为true，Object水平方向将无法被缩放。默认值为false。
+lockScalingY(boolean)：当设置为true，Object垂直方向将无法被缩放。默认值为false。
+lockUniScaling(boolean)：当设置为true，Object将无法被锁定比例进行缩放。默认值为false。
+minScaleLimit(Number)：Object缩放比例最小值，默认值为0.01。
+oCoords(Object)：Object包含的控制器的坐标，默认值为null。
+opacity(Number)：Object的透明度，默认值为1。
+originX(String)：Object平移的水平起始点，可选值有"left"|"right"|"center"默为值为"left"。查阅http://jsfiddle.net/1ow02gea/40/获知originX和orginY是如何影响Group中的Object。
+originY(String)：Object平移的垂直起始点，可选值有"top"|"bottom"|"center"默为值为"top"。查阅http://jsfiddle.net/1ow02gea/40/获知originX和orginY是如何影响Group中的Object。
+padding(Number)：Object与其控制器边框中间的空白间距，以像素为单位，默认为0。
+perPixelTargetFind(boolean)：当设置为true时，canvas上的object是基于像素进行检索的，而不是基于边框盒模型。默认为false。
+rotatingPointOffset(Number)：Object控制器旋转点的偏移量（当hasRotatingPoint设置为true时才有效），默认值为40。
+rx(Number)：水平半径，默认值为0。
+ry(Number)：垂直半径，默认值为0。
+scaleX(Number)：Object水平方向的缩放因子。默认值为1。
+scaleY(Number)：Object垂直方向的缩放因子，默认值为1。
+selectable(boolean)：当设置为false时，Object无法被选中编辑（无论是以像素点为基础或以组为基础），但是相应的事件仍然会触发。默认值为true。
+shadow(fabric.Shadow)：当前图形的Shadow对象，默认为null。
+stateProperties(Array)：属性列表，用于检查Object的状态是否改变（fabric.Object.hasChanged）。目的在于实现历史状态的redo和undo操作。
+stroke(String)：当该属性有定义的时候，Object将通过该属性定义的线条以及颜色进行渲染。默认为null。
+strokeDashArray(Array)：用于装载Object线条的破折号样式的数组（stroke属性必须已被定义）。
+strokeLineCap(String)：Object线条的终端样式，可选值有"butt"|"round"|"square"，默认值为"butt"。
+strokeLineJoin(String)：Object线条连接处边角的样式，可选值有"bevil"|"round"|"miter"，默认值为"miter"。
+strokeMiterLimit(Number)：Object线条链接处的最大斜角长度（当strokeLineJoin值设置为miter时起作用），默认值为10。
+strokeWidth(Number)：用于渲染Object的线条的宽度，默认值为1。
+top(Number)：Object的顶部位置。注意：默认情况下是相对于Object的中点，你可以设置originY={top|center|bottom}进行改变。默认值为0。
+transformMatrix(Array)：变换矩阵（类似于SVG的变换矩阵）。
+transparentCorners(boolean)：当设置为true时，Object的控制器边缘内部将会被渲染为透明，默认值为true。
+type(String)：Object的类型，可选值为"rect"|"circel"|"path"等，默认值为"object"。要注意的是，这个属性为只读，不能进行修改。如果你修改这个属性的值，Fabric框架特定部分（比如JSON加载）将会不正常。
+visible(boolean)：当设置为false，Object将不会在Canvas上被渲染。默认值为true。
+width(Number)：Object的宽度，默认值为0。
+
+类函数成员：
+static fabric.Rect fromElement(SVGElement, Object opt)：通过指定的SVG元素返回fabric.Rect实例。第一个参数是指定的SVG元素。
+static fabric.Rect fromObject(Object)：通过指定的Object返回对应的fabric.Rect实例。
+void _renderControls(CanvasRenderingContext2D, boolean opt)：渲染Object的控制器以及边框。第一个参数是渲染的Context；第二个参数若设置为true，则相关的Context则不会被变换。
+void _restoreCompositeOperation(CanvasRenderingContext2D)：在Object变更渲染之后，保存之前的保存的画布操作（globalCompositeOperation）。参数则是指定在其上染上的Context。
+void _setupCompositeOperation(CanvasRenderingContext2D)：为指定的Object设置一个画布全局操作（globalCompositeOperation）。特定的Object自定义操作可以通过设置globalCompositeOperation属性进行设置。参数则是指定在其上染上的Context。
+void adjustPosition(String)：参数可选值为"left"|"center"|"right"。
+fabric.Object animate(String | Object, Number | Object)：对指定的属性进行动画变换。第一个参数是用于动画的属性（Object类型可指定多个）；当参数一为String时，参数二为变换的终点值，否则为对象选项。具体可参照：http://fabricjs.com/fabric-intro-part-2/#animation。
+fabric.Object bringForward(boolean opt)：将绘制的Object在栈中位置向上移动。当参数设置为true时，将Object置于下一个相交的Object之上。
+fabric.Object bringToFront()：将Ojbect移到绘图栈的最顶端。
+fabric.Ojbect center()：在Canvas的水平和垂直方向上居中Object。居中操作之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object centerH()：在Canavs的水平方向上居中Object。之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object centerV()：在Canvas的垂直方向上居中Object。之后，你需要调用Object的setCoords()函数来更新控制区。
+fabric.Object clone(Function, Array)：深度复制Object。第一个参数是回调函数，该回调的第一个参数是复制出来的Object；第二个参数是一个数组，装载着你想要添加到输出的所有属性。
+fabric.Object cloneAsImage(Function)：从Object创建出一个新的fabric.Image实例。参数是一个回调函数，该回调的第一个参数是复制出来的fabric.Image实例。
+Number complexity()：返回一个实例的复杂度。（译者注：该函数估计会被各子类重载，因为这个函数在Object类中直接返回0）。
+boolean containsPoint(fabric.Point)：检查指定的点是否包含在Object中。
+fabric.Object drawBorders(CanvasRenderingContext2D)：绘制Object盒模型的四周，要求有以下公共属性：width、height、padding、borderColor。
+fabric.Object drawControls(CanvasRenderingContext2D)：绘制Object盒模型的控制器，要求有以下公共属性：width、height、conerSize、padding。
+fabric.Object fxstraighten(Object)：和fabric.Object.prototype.straighten()的作用一样，只不过带了动画效果。参数是一个Object，里面有两个元素onComplete和onChange，分别是两个回调函数。onComplete在动画结束之后调用，onChange在动画的每一阶段分别调用。
+Any get(String)：最基本的getter函数，参数为想要获取的属性名。
+Number getAngle()：获得Object的旋转角度，以“度”为单位。
+Object getBoundingRect()：返回Object的边框矩形坐标。返回值是一个Object类型，其中包括了left、top、width、height四个元素。
+Number getBoundingRectHeight()：返回Object的边框矩形的高度。（版本1.0.4开始已废弃）
+Number getBoundingRectWidth()：返回Object的边框矩形的宽度。（版本1.0.4开始已废弃）
+fabric.Point getCenterPoint()：返回Object的真实中点坐标。
+Function getClipTo()：获得Object的裁剪函数。
+String getFill()：获得Object的填充颜色。
+boolean getFlipX()：获得Object的flipX属性。
+boolean getFlipY()：获得Object的flipY属性。
+Number getHeight()：获得Object的高度。
+Number getLeft()：获得Object左边的位置，即X坐标，以像素为单位。
+Object getLocalPointer(Event, Object opt)：获取一个点在Object上的本地坐标。注意：第二个参数可选。这个函数默认情况下是获取当前鼠标所在点的本地坐标，如果指定了第二个参数，则该函数将获取第二个参数指定的点的本地坐标。返回值和第二个函数都是Object，包函x、y两个成员。
+Number getOpacity()：获取Object的透明度，在0到1之间的数字。
+String getOriginX()：获取Object的原点X值。
+String getOriginY()：获取Object的原点Y值。
+fabric.Point getPointByOrigin(String, String)：如果Object有不同的原点，该函数可获得Object的原点坐标。第一个参数代表originX，可选值为："left"、"center"、"right"；第二个参数代表originY，可选值为："top"、"center"、"bottom"。
+Number getScaleX()：获取Object的scaleX属性值。
+Number getScaleY()：获取Object的scaleY属性值。
+Object getShadow()：获取Object的阴影，返回阴影实例。（译者注：不清楚为啥文档写的是返回Object而不是fabric.Shadow）。
+String getStroke()：获取Object的stroke属性值。
+Number getStrokeWidth()：获取Object的笔划宽度。
+String getSvgStyles()：获取svg输出的样式字符串。
+String getSvgTransform()：获取svg输出的变换字符串。
+String getSvgTransformMatrix()：从单一元素的变换矩阵中返回svg输出的变换字符串。
+Number getTop()：获得Object的顶部位置，即Y坐标，以像素为单位。
+Array getTransformMatrix()：获得Object的变换矩阵，即transformMatrix属性值。
+boolean getViewportTransform()：在可能的情况下，获取Object的视口变换。（译者注：源码中返回的是数组，不知道为啥文档中写的是返回boolean）。
+boolean getVisible()：获取Object是否可见。
+Number getWidth()：获取Object的宽度。
+boolean hasStateChanged()：当任一个Object的状态属性发生变化是，该函数返回true。
+fabric.Rect initialize(Object)：构造函数，参数是要初始化的属性值。
+boolean intersectsWithObject(fabric.Object)：探测该Object是否与指定的Object有交集。
+boolean intersectsWithRect(Object, Object)：探测该Object是否与指定的矩型有交集。第一个参数是矩形左上角的点；第二个参数是矩形右上角的点。
+boolean isContainedWithinObject(fabric.Object)：探测该Object是否完全包含在另一个指定的Object中。
+boolean isContainedWithinRect(Object, Object)：探测该Object是否完全包含在指定的矩形中。第一个参数是矩形左上角的点；第二个参数是矩形右上角的点。
+boolean isControlVisible(String)：当指定的控制器可见是返回true，否测返回false。参数为控制器的名称，可选值有："tl"、"tr"、"bl"、"br"、"ml"、"mt"、"mr"、"mb"、"mtr"。
+boolean isType(String)：指定的类型和当前Object类型相同时，则返回true。
+fabric.Object moveTo(Number)：将Object移至绘制栈的指定层。
+fabric.Object remove()：将Object从Canvas上移除。
+render(CanvasRenderingContext2D, boolean opt)：在指定的Context上渲染Object。第一个参数是将要渲染的Object；第二个参数为true时，Context将不会进行变换。
+fabric.Object saveState(Object opt)：保存Object的状态。参数是一个Object，当状态保存过程中需要额外添加到Object中的状态属性。
+fabric.Object scale(Number)：缩放Object，X和Y轴方向上等值。参数即是缩放因子。
+fabric.Object scaleToHeight(Number)：将Object的高度缩放到指定值。考虑到盒模型，最好是使用scale进行x、y轴等比缩放。
+fabric.Object scaleToWidth(Number)：将Object的宽度缩放到指定值。考虑到盒模型，最好是使用scale进行x、y轴等比缩放。
+fabric.Object sendBackwards(boolean)：将Object在绘制栈中向下移一层。当参数为true时，将Object移到下一个与之相交的Object之后。
+fabric.Object sendToBack()：将Object移至绘制栈的最底部。
+fabric.Object set(String | Object, Object | Function)：为指定的属性设置值。当设置位置或维度（与left、top、scale、angle等相关联）的属性时，set函数Object的边框和控制器的位置。如果你要将它们也进行更新，需要调用setCoord()函数。第一个参数指定属性名或Object，为Object时函数将会遍历该Object的键值对；第二个参数指定属性值或Function，为Function时属性值将会作为参数传放，并返回一个新值。
+fabric.Object setAngle(Number)：设置Object的角度，以“度”为单位。
+fabric.Object setClipTo(Function)：设置Object的裁剪函数，即clipTo属性。
+fabric.Object setColor(String)：设置实例的颜色（Color是fill属性的别名）。
+fabric.Object setControlsVisibility(Object opt)：设置fabric.Object控制器的显示/隐藏状态。参数是一个要选的Object，可选成员如下所示：
+bl: boolean类型，为true则bottom-left控制器可用，false则不可用。
+br: boolean类型，为true则bottom-right控制器可用，false则不可用。
+mb: boolean类型，为true则middle-bottom控制器可用，false则不可用。
+ml: boolean类型，为true则middle-left控制器可用，false则不可用。
+mr: boolean类型，为true则middle-right控制器可用，false则不可用。
+mt: boolean类型，为true则middle-top控制器可用，false则不可用。
+tl: boolean类型，为true则top-left控制器可用，false则不可用。
+tr: boolean类型，为true则top-right控制器可用，false则不可用。
+mtr: boolean类型，为true则middle-top-rotate控制器可用，false则不可用。
+fabric.Object setControlVisible(String, boolean)：设置指定的控制器显示/隐藏状态。第一个参数是指定的控制器名，可选值有'tl', 'tr', 'br', 'bl', 'ml', 'mt', 'mr', 'mb', 'mtr'；第二个参数为true则指定的控制器可用，否则不可用。
+fabric.Object setCoords()：以当前的角度、宽高为基准，设置四角的的位置。可参考：https://github.com/kangax/fabric.js/wiki/When-to-call-setCoords。
+fabric.Object setFill(String)：设置Object的填充颜色。参数示例：rgb(0,0,0)。
+fabric.Object setFlipX(boolean)：设置Object的flipX属性值。
+fabric.Object setFlipY(boolean)：设置Object的flipY属性值。
+fabric.Object setGradient(String, Object)：设置（填充或画笔）的渐变色。无法向后兼容提示：在v1.1.0之前，该函数被命名为setGradientFill。第一个参数可选值为"stroke"或"fill"；第二个参数为Object，可选属性如下：
+属性名	类型	是否可选	默认值	说明
+type	String	是		渐变类型，"linear"或"radial"
+x1	Number	是	0	起始点x坐标
+y1	Number	是	0	起始点y坐标
+x2	Number	是	0	终点x坐标
+y2	Number	是	0	终点y坐标
+r1	Number	是	0	起始点半径（仅在径向渐变时生效）
+r2	Number	是	0	终止点半径（仅在径向渐变时生效）
+colorStops	Object	是		终止色，示例：{0: 'ff0000', 1: '000000'}
+示例1：
+object.setGradient('fill', {
+  type: 'linear',
+  x1: -object.width / 2,
+  y1: 0,
+  x2: object.width / 2,
+  y2: 0,
+  colorStops: {
+    0: 'red',
+    0.5: '#005555',
+    1: 'rgba(0,0,255,0.5)'
+  }
+});
+canvas.renderAll();
+示例2：
+object.setGradient('fill', {
+  type: 'radial',
+  x1: 0,
+  y1: 0,
+  x2: 0,
+  y2: 0,
+  r1: object.width / 2,
+  r2: 10,
+  colorStops: {
+    0: 'red',
+    0.5: '#005555',
+    1: 'rgba(0,0,255,0.5)'
+  }
+});
+canvas.renderAll();
+fabric.Object setLeft(Number)：设置Object的左边距，以像素为单位。
+fabric.Object setOpacity(Number)：设置Object的透明度，参数范围[0-1]。
+void setOptions(Object opt)：通过参数设置Object的属性。
+fabric.Object setOriginX(String)：设置originX属性值，可选值为："left", "right", "center"。
+fabric.Object setOriginY(String)：设置originY属性值，可选值为："top", "bottom", "center"。
+fabric.Object setPatternFill(Object)：设置Object的样式填充。参数的可选成员如下：
+参数名	类型	是否可选	默认值	说明
+source	String | HTMLImageElement			样式来源
+repeat	String	是	"repeat"	指定是否重复样式填充，可选值有："repeat"、"repeat-x"、"repeat-y"、"no-repeat"
+offsetX	Number	是	0	相对于左上角的水平偏移量
+offsetY	Number	是	0	相对于右上角的垂直偏移量
+示例：
+fabric.util.loadImage('http://fabricjs.com/assets/escheresque_ste.png', function(img) {
+  object.setPatternFill({
+    source: img,
+    repeat: 'repeat'
+  });
+  canvas.renderAll();
+});
+void setPositionByOrigin(fabric.Point, String, String)：根据Object的原点设置Object的值置。第一个参数指定的Object的新位置；第二个参数指定Object的水平原点，可选值有：'left', 'center' or 'right'；第三个参数指定Object的垂直原点，可选值有：'top', 'center' or 'bottom'。
+fabric.Object setScaleX(Number)：设置Object的scaleX属性值。
+fabric.Object setScaleY(Number)：设置Object的scaleY属性值。
+fabric.Object setShadow(Object | String opt)：设置Object的阴影。当参数为String类型时，可以如下格式设置："2px 2px 10px rgba(0,0,0,0.2)"；当参数为Object类型时，可选成员如下：
+属性名	类型	是否可选	默认值	说明
+color	String	是	rgb(0,0,0)	阴影颜色
+blur	Number	是	0	阴影模糊度
+offsetX	Number	是	0	水平偏移量
+offsetY	Number	是	0	垂直偏移量
+示例1：
+object.setShadow('2px 2px 10px rgba(0,0,0,0.2)');
+canvas.renderAll();
+示例2：
+object.setShadow({
+  color: 'red',
+  blur: 10,
+  offsetX: 20,
+  offsetY: 20
+});
+canvas.renderAll();
+fabric.Object setSourcePath(String)：设置Object的源路径。译者注：不清楚这里的source path是指啥。参数即为要设置的sourcePath属性值。
+fabric.Object setStroke(String)：设置Object的画笔。
+fabric.Object setStrokeWidth(Number)：设置Object的画笔宽度。
+fabric.Object setTop(Number)：设置Object的top属性，以像素为单位。
+fabric.Object setTransformMatrix(Array)：设置Object的transformMatrix属性。
+fabric.Object setupState()：建立Object的状态。
+fabric.Object setVisible(boolean)：设置Object的visible属性。
+fabric.Object straighten()：拉直Object（将Object从前当角度旋转到0、90、180、270度，取决于哪个角度比较靠近）。
+Object toDatalessObject(Array opt)：返回代表该实例的无数据Object。参数可选，该数组可指定任意你想添加到输出的属性。
+String ToDataURL(Object)：将Object转换成类URL的字符串。参数可选成员如下：
+属性名	类型	是否可选	默认值	说明
+format	String	是	png	输出图片的格式，可选"jpeg"或"png"
+quality	Number	是	1	输出图片质量，[0-1]，jpeg格式生效
+multiplier	Number	是	1	缩放因子
+left	Number	是		裁剪区域左偏移量，v1.2.14引入
+top	Number	是		裁剪区域顶部偏移量，v1.2.14引入
+width	Number	是		裁剪区域宽度，v1.2.14引入
+height	Number	是		裁剪区域高度，v1.2.14引入
+fabric.Object toggle(String)：切换指定的属性，true变为false，false变为true。
+Object toJSON(Array opt)：返回一个代表当前实例的JSON对象。参数可选，该数组可指定任意你想添加到输出的属性。
+fabric.Point toLocalPoint(fabric.Point, originX, originY)：返回指定的点在当前Object的本地坐标。第一个参数指定一个需要转换的全局坐标；第二个参数指定了水平原点，可选值有'left', 'center' or 'right'；第三个参数指定了垂直原点，可选值有'top', 'center' or 'bottom'。
+Object toObject(Array opt)：返回一个代表当前实例的Object对象。参数可选，该数组可指定任意你想添加到输出的属性。
+String toString()：返回一个代表当前实例的字符串。
+String toSVG(Function opt)：返回代表当前实例的SVG字符串。参数是一个可选的回调函数，用于更进一步转换SVG对象。
+void transform(CanvasRenderingContext2D, boolean)：当渲染Object时对Context进行变换。当第二个参数为true时，context被变换到Object的左上角，这个用在渲染文本的时候。
+fabric.Point translateToCenterPoint(fabric.Point, String, String)：将指定的坐标点从原点平移到中点坐标（基于Object的维度）。第一个参数的X/Y坐标分别对应第二和第三个参数；第二个参数即水平原点，可选值为'left', 'center' or 'right'；第三个参数即垂直原点，可选值为'top', 'center' or 'bottom'。
+fabric.Point translateToOriginPoint(fabric.Point, String, String)：将指定的坐标点从中点坐标平移到原点（基于Object的维度）。第一个参数的X/Y坐标分别对应第二和第三个参数；第二个参数即水平原点，可选值为'left', 'center' or 'right'；第三个参数即垂直原点，可选值为'top', 'center' or 'bottom'。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
