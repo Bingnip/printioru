@@ -67,9 +67,10 @@ function addLayerToCanvas() {
 function clipByName(ctx) {
     this.setCoords();
     var clipRect = findByClipName(this.clipName);
+    console.log(this);
     var scaleXTo1 = (1 / this.scaleX);
     var scaleYTo1 = (1 / this.scaleY);
-    ctx.save();
+    ctx.save();  //Canvas状态存储在栈中，每当save()方法被调用后，当前的状态就被推送到栈中保存。
     var ctxLeft = -(this.width / 2) + clipRect.strokeWidth;
     var ctxTop = -(this.height / 2) + clipRect.strokeWidth;
     var ctxWidth = clipRect.width - clipRect.strokeWidth;
@@ -85,13 +86,14 @@ function clipByName(ctx) {
         clipRect.height
     );
     ctx.closePath();
-    ctx.restore();
+    ctx.restore(); //每一次调用restore方法，上一次保存的状态就从栈中弹出，所有设定都恢复。
 }
 function findByClipName(name) {
     return _(canvas.getObjects()).where({
         clipFor: name
-    }).first()
+    }).first();
 }
+
 function degToRad(degrees) {
     return degrees * (Math.PI / 180);
 }

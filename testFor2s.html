@@ -17,7 +17,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
 
     addImageToCanvas('./img/css.png');
     function addImageToCanvas(imgSrc) {
-        // fabric.Object.prototype.transparentCorners = false;
+        fabric.Object.prototype.transparentCorners = false; //控制选框八个角是否透明
 
         fabric.Image.fromURL(imgSrc, function(myImg) {
             var img1 = myImg.set({  //定义背景图大小位置
@@ -30,18 +30,20 @@ src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
             canvas.add(img1);  //加入画布
 
             var clipRectangle = new fabric.Rect({
-                originX: 'left', //平移的水平起始点
+                originX: 'left', //平移的水平起始点，一般取默认值，实际没啥用好像
                 originY: 'top',
                 left: 150,
                 top: 150,
                 width: 200,
                 height: 200,
                 fill: 'transparent', //透明的填充色
-                strokDashArray: [10, 10],  //stroke参数必须，虚线及间隔参数
+                strokeDashArray: [10, 10],  //stroke参数必须，虚线及间隔参数
                 stroke: 'red', //描边颜色
                 selectable: false //取消选框，相当于可见裁剪的区域
             })
-
+            clipRectangle.set({  // 这一步set clipFor, 后面获取画布所有对象的时候用where直接查处来这个对象
+                clipFor: 'layer'
+            })
             canvas.add(clipRectangle); //加入画布
         })
     }
@@ -52,11 +54,40 @@ src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/1.2.1/lodash.min.js"
 
         clickedImage.onload = function(img) {
             var pug = new fabric.Image(clickedImage, {  //js生成的图片注入fabric的image类
-
-            })
-        }
-
+                width: 100,
+                height: 100,
+                left: 150,
+                top: 150,
+                clipName: 'layer',
+                clipTo: function(ctx) {
+                    return _.bind(clipByName, pug)(ctx)  //_.bind(func, this)
+                }
+            });
+            canvas.add(pug);
+        };
         clickedImage.src = './img/html.png';  //相当于给浏览器缓存了一张图片，src 属性一定要写到 onload 的后面，否则程序在 IE 中会出错。
+    }
+
+     /* 
+     * 其中的this就是pug参数，就是注入到fabric的Image 
+     * 这一步关键，事实更新控制区，超出控制区的部分不显示
+     */
+    function clipByName(ctx) {
+        // this.setCoords(); //用来实时更新控制区
+        var clipRect = findByClipName(this.clipName);  
+        console.log(this);
+    }
+
+    /*
+    * name就是pug定义的clipName: 'layer'，获取可编辑区域的对象（红框虚线）
+    */
+    function findByClipName(name) {
+        var obj = canvas.getObjects();  // 获得画布中的所有对象：img1, clickedImage, layer
+        var clip = _(obj).where({
+            clipFor: name
+        });  // 返回的是一个数组，所以用first()取出第一个
+        
+        return clip.first();  //返回的是红框虚线的对象
     }
 </script>
 </html>
